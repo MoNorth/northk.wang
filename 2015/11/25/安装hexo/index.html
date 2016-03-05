@@ -1,0 +1,778 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gitcafe Page,github Page,hexo,博客," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="花了两天的时间终于搞定了hexo + gitcafe的博客的搭建。在我现在初次使用看来，它是多么的适用于我们程序员，所谓的逼格无比之高。那么接下来就开一个小小的教程，去搭建一个逼格如此之高的博客。参考来自网络上的各位大神，我在此借用一下各位的研究，希望不要介意。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装hexo">
+<meta property="og:url" content="http://yoursite.com/2015/11/25/安装hexo/index.html">
+<meta property="og:site_name" content="Mo_North">
+<meta property="og:description" content="花了两天的时间终于搞定了hexo + gitcafe的博客的搭建。在我现在初次使用看来，它是多么的适用于我们程序员，所谓的逼格无比之高。那么接下来就开一个小小的教程，去搭建一个逼格如此之高的博客。参考来自网络上的各位大神，我在此借用一下各位的研究，希望不要介意。">
+<meta property="og:image" content="http://yoursite.com/images/2015-11-24_215217.png">
+<meta property="og:updated_time" content="2015-11-25T03:43:57.099Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安装hexo">
+<meta name="twitter:description" content="花了两天的时间终于搞定了hexo + gitcafe的博客的搭建。在我现在初次使用看来，它是多么的适用于我们程序员，所谓的逼格无比之高。那么接下来就开一个小小的教程，去搭建一个逼格如此之高的博客。参考来自网络上的各位大神，我在此借用一下各位的研究，希望不要介意。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 安装hexo | Mo_North </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mo_North</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                安装hexo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-25T11:28:12+08:00" content="2015-11-25">
+              2015-11-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/25/安装hexo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/25/安装hexo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>花了两天的时间终于搞定了hexo + gitcafe的博客的搭建。在我现在初次使用看来，它是多么的适用于我们程序员，所谓的逼格无比之高。那么接下来就开一个小小的教程，去搭建一个逼格如此之高的博客。参考来自网络上的各位大神，我在此借用一下各位的研究，希望不要介意。</p>
+<a id="more"></a>
+<h2 id="安装前准备">安装前准备</h2><h3 id="github/gitcafe">github/gitcafe</h3><p>在我刚开始搭建的时候也是使用的github，但由于我的主要使用地为国内，还没有那么大的能力发展到国外，所以就是用了速度在国内相对快一点的gitcafe（手动靠ping来测试的，不专业，可以忽略），基本配置没什么区别。所以首先你得有一个github账号，或者gitcafe，接下来我会主要介绍gitcafe的安装。</p>
+<blockquote>
+<p><a href="https://gitcafe.com" target="_blank" rel="external">访问：gitcafe.com</a></p>
+</blockquote>
+<p>相信注册就不用多说了，注册好登入自己的账号，新建一个项目</p>
+<p><img src="/images/2015-11-24_215217.png" alt="创建项目"></p>
+<p><strong>注意：项目名称为你的用户名，项目主页为 <a href="http://你的用户名.gitcafe.io" target="_blank" rel="external">http://你的用户名.gitcafe.io</a></strong></p>
+<p>然后就是安装git bash了，如果你不知道git bash是什么，那还请在研究研究github的使用。<br>当然，你也可以跟着我继续往下走，基本的使用方法我也会介绍的。我目前也没有git bash特别的下载地址，我就随便推荐一个，这个网上一搜一大片。<a href="http://download.csdn.net/detail/zhh123sy001/7056927" target="_blank" rel="external">git bash下载地址</a></p>
+<h3 id="git_bash的简单使用和ssh">git bash的简单使用和ssh</h3><p><a href="https://gitcafe.com/GitCafe/Help/wiki/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E5%92%8C%E8%AE%BE%E7%BD%AE-Git" target="_blank" rel="external">参考自：GitCafe 官方帮助文档</a></p>
+<p>右键点击任意地方（桌面或文件夹或文件），选择Git Bash Here，会弹出一个命令行工具</p>
+<ol>
+<li><p>进入ssh目录</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<p> 如果没有ssh目录可以手动创建一个。<code>mkdir ~/.ssh</code>。但由于权限问题可能会创建失败，不过没关系，失败了就忽略这一步。</p>
+</li>
+<li><p>生成ssh密钥</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"YOUR_EMAIL@YOUREMAIL.COM"</span></span><br></pre></td></tr></table></figure>
+<p> 将其中的YOUR_EMAIL@YOUREMAIL.COM替换成你的email地址。接下来会提示你设置passphrase 口令，如果你需要，就设置一下，要输入两次。如果不需要，就果断一通回车。</p>
+</li>
+<li>在刚才的操作下已经生成了ssh密钥了，屏幕上会提示你密钥的存放地址，进入这个地址，用编辑器打开公钥<code>id_rsa.pub</code>这个文件，记得是公钥。复制<code>id_rsa.pub</code>中的内容到剪贴板。</li>
+<li>打开你的gitcafe，进入GitCafe –&gt;账户设置–&gt;SSH 公钥管理设置项，点击添加新公钥 按钮，Title可以随便设置，Key文本去将刚才你复制的内容粘贴进去就好啦。然后点击更新。就完成啦。</li>
+<li><p>当然，到底有没有成功，还是很有必要测试一下的。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitcafe.com</span><br></pre></td></tr></table></figure>
+<p> 输入上述命令后，由于第一次连接，可能会有警告，不过这些都不要紧，你就回车回车回车，只要出现了<code>Hi USERNAME! You&#39;ve successfully authenticated, but GitCafe does not provide shell access.</code>,那就成功啦，要是没有，你就再好好看看上述步骤吧。</p>
+</li>
+</ol>
+<h3 id="安装nodejs">安装nodejs</h3><p>由于hexo是基于nodejs的一款博客发布工具，所以当然nodejs就必不可少了。如果你也不了解nodejs，没关系，这不影响hexo的基本使用，只是如果你想要你的博客更绚丽，那就需要了解nodejs然后自己去改写主题或者自己建立主题了。</p>
+<p><a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs官方网站</a></p>
+<p><a href="http://nodejs.cn/" target="_blank" rel="external">nodejs中文网</a></p>
+<p><a href="http://jingyan.baidu.com/article/a948d6515d4c850a2dcd2e18.html" target="_blank" rel="external">nodejs安装教程</a></p>
+<p>由于nodejs在windows上的安装很简单，只需要在官网下载好你系统所对应的安装包然后根据提示一步一步安装就行了，所以这块我就贴上了一篇简单易懂的nodejs的来自百度经验的教程，供大家参考。<strong>不过记住，在选择安装组建的时候，npm一定是必不可少的</strong></p>
+<p>好了，安装好了就简单的测试一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>如果上述两条命令依次显示各自的版本号，类似于<code>v0.12.3</code>和<code>2.9.1</code>，那么就说明安装成功了。命令在哪输？还记得刚才装的Git Bash吗？在那个里面。</p>
+<h2 id="安装hexo">安装hexo</h2><p><a href="https://hexo.io/" target="_blank" rel="external">hexo官方网站</a></p>
+<p>由于hexo一直在不断地更新，所以官网上的文档也是最权威的，接下来我所说的是我的安装方法，现在还能用吧，要是再过一段时间不能用了，还希望大家去参考官方网站。</p>
+<ol>
+<li><p>打开git bash，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>仅需上述一条命令就安装结束了，简单吧，但一定要记住那个参数<code>-g</code>哦，这个意味着安装全局模式，可不能少。</p>
+</li>
+<li>然后就是建立你博客的本地仓库了，这个地址很随意，你那里有空地往哪建就行了，比如说<code>D:\hexo</code>,就是在你的磁盘的任意地方建立一个存放你的博客本地文件的文件夹，名字随意。</li>
+<li><p>接下来就是部署，在你刚才<strong>新建的那个文件夹上右键，选择git bash here</strong>，然后输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来hexo会自动在你的文件夹内生成它的必要文件，你可以查看一下那个文件夹中的内容，看是否多出了不少东西。如果有，那就是安装完成啦。</p>
+</li>
+</ol>
+<h2 id="hexo的基本使用">hexo的基本使用</h2><h3 id="hexo的本地调试">hexo的本地调试</h3><p>刚安装好，那就赶紧试试好了没有，输入以下两条命令，坐等收货吧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<p>当然上述命令是简写，你也可以使用全写<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure></p>
+<p>然后屏幕中会提示你<code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.</code>,然后打开你的浏览器，输入地址<code>localhost:4000</code>,就会看到你的博客了。</p>
+<h3 id="hexo部署至gitcafe">hexo部署至gitcafe</h3><p>接下来就是部署至gitcafe了，这里有一个特别重要的配置文件要进行修改，即你主目录（也就是你建的那个文件夹）下的<code>_config.yml</code>文件，然后用你的编辑器打开它。<br>在文件中你可看到如下的内容（一部分），然后根据提示可进行修改，下面修改自己博客的名字<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Site</span></span><br><span class="line">title: Mo_North</span><br><span class="line">subtitle: </span><br><span class="line">description: </span><br><span class="line">author: Mo_North</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure></p>
+<p>上述的title，subtitle之类的可根据自己实际情况进行修改，下面我没有提及的内容大家也可根据提示修改，但修改需谨慎呀。接下来就是最重要的一步修改了，在文件中找到如下内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@gitcafe.com:north/north.git</span><br><span class="line">  branch: gitcafe-pages</span><br></pre></td></tr></table></figure></p>
+<p>如果没有或者只有一部分的，可按照我上述内容补充。<strong>注意格式，冒号后面一定有一个空格</strong></p>
+<ol>
+<li>其中<code>type</code>的值为<code>git</code></li>
+<li><code>repo</code>的值为<code>git@gitcafe.com:你的gitcafe用户名/你的gitcafe用户名.git</code>，将你的gitcafe用户名填写进去即可，注意大小写</li>
+<li>然后就是<code>branch</code>了，如果你使用gitcafe，那么branch必须为<code>gitcafe-pages</code>,如果是github，不做要求，你就填写<code>master</code>好了。</li>
+</ol>
+<p>修改好了的话就保存，之后再git bash中输入以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<p>当然你也可以写全写<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>如果你在配置ssh的时候设置了passphrase，那么git bash会提示你输入，如果没设置，等着就好了。等命令运行结束后，打开浏览器，在地址栏输入<code>http://你的gitcafe用户名.gitcafe.io</code>,就会进入你的博客啦。</p>
+<p>好啦，基本安装hexo就讲到这里，在接下来的一章我会给大家讲以下各种主题的安装，评论插件的使用以及基本的博文书写，发布，删除等等操作。如果上述内容存在错误或者有疑问，欢迎评论，我会一一回复，希望对大家有多帮助。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gitcafe-Page/" rel="tag">#gitcafe Page</a>
+          
+            <a href="/tags/github-Page/" rel="tag">#github Page</a>
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/博客/" rel="tag">#博客</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/03/wechat-node/" rel="prev" title="wechat-node">
+                wechat-node <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/25/安装hexo/"
+           data-title="安装hexo" data-url="http://yoursite.com/2015/11/25/安装hexo/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mo_North" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mo_North</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/MoNorth" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://xiyoumobile.com" target="_blank">西邮移动应用开发实验室</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lyh__521" target="_blank">本山的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.xxput.com" target="_blank">小鑫的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yes_i_am" target="_blank">巨龙的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装前准备"><span class="nav-number">1.</span> <span class="nav-text">安装前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github/gitcafe"><span class="nav-number">1.1.</span> <span class="nav-text">github/gitcafe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git_bash的简单使用和ssh"><span class="nav-number">1.2.</span> <span class="nav-text">git bash的简单使用和ssh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nodejs"><span class="nav-number">1.3.</span> <span class="nav-text">安装nodejs</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo的基本使用"><span class="nav-number">3.</span> <span class="nav-text">hexo的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo的本地调试"><span class="nav-number">3.1.</span> <span class="nav-text">hexo的本地调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo部署至gitcafe"><span class="nav-number">3.2.</span> <span class="nav-text">hexo部署至gitcafe</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mo_North</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"north"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

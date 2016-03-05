@@ -1,0 +1,769 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="node,nodejs,wechat,wechat-node," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="微信后台开发nodejs模块由于本人手闲,开发了基于nodejs express的用于开发微信的一个模块件,写的不好,见笑了.然而并没有写完,先凑合着用吧.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wechat-node">
+<meta property="og:url" content="http://yoursite.com/2015/12/03/wechat-node/index.html">
+<meta property="og:site_name" content="Mo_North">
+<meta property="og:description" content="微信后台开发nodejs模块由于本人手闲,开发了基于nodejs express的用于开发微信的一个模块件,写的不好,见笑了.然而并没有写完,先凑合着用吧.">
+<meta property="og:updated_time" content="2015-12-03T13:21:41.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wechat-node">
+<meta name="twitter:description" content="微信后台开发nodejs模块由于本人手闲,开发了基于nodejs express的用于开发微信的一个模块件,写的不好,见笑了.然而并没有写完,先凑合着用吧.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> wechat-node | Mo_North </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mo_North</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                wechat-node
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-03T21:17:54+08:00" content="2015-12-03">
+              2015-12-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/wechat/" itemprop="url" rel="index">
+                    <span itemprop="name">wechat</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/03/wechat-node/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/03/wechat-node/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="微信后台开发nodejs模块">微信后台开发nodejs模块</h1><p>由于本人手闲,开发了基于nodejs express的用于开发微信的一个模块件,写的不好,见笑了.<br>然而并没有写完,先凑合着用吧.</p>
+<a id="more"></a>
+<h2 id="git_clone_地址">git clone 地址</h2><p><a href="https://github.com/MoNorth/wechat.git" target="_blank" rel="external">https://github.com/MoNorth/wechat.git</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/MoNorth/wechat.git</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装">安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install wechat-node</span><br></pre></td></tr></table></figure>
+<h2 id="使用">使用</h2><p><strong>由于本项目是基于express写的,所以使用前请大家先安装express 4.X模块 <code>npm install express</code></strong></p>
+<h3 id="初始化">初始化</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> wechat_node = <span class="built_in">require</span>(<span class="string">"wechat-node"</span>);</span><br><span class="line"><span class="keyword">var</span> wechat = <span class="keyword">new</span> wechat_node(app,<span class="string">"YOU APPID"</span>,<span class="string">"YOU SECRET"</span>,<span class="string">"YOU TOKEN"</span>);</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 你的代码</span><br><span class="line"> */</span></span><br><span class="line">app.listen(<span class="number">8080</span>);<span class="comment">//监听端口与IP随意,这块只是示例.</span></span><br></pre></td></tr></table></figure>
+<h3 id="基本组件">基本组件</h3><h4 id="微信认证">微信认证</h4><p>如果你的服务器并没有与微信服务器进行过交互,也就是还没有进行认证的话,这块就得加载这个模块,如果已经认证过了,就不需要了.当然,加了也没事.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wechat.use(<span class="string">"authentication"</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="加载access_token">加载access_token</h4><p><code>access_token</code>在本项目中有两种存储方式,一种是存在内存中,一种是存在<code>moudle/token.txt</code>,为什么是<code>txt</code>文件呢,可能是当时手误,请忽略,我会改正的.现在的情况而言,我本没有选择去加载在内存中,因为要经常调试,服务器一直开开关关,保存在内存中的话再次开启又要重新加载,实属下下策,所以目前默认是加载在文件中,目前没有些配置的方法,以后肯定会有,当然我也在<code>access_token.js</code>文件中写出来了,取消注释即可.下面贴出调用方法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wechat.use(<span class="string">"setToken"</span>,callback);</span><br></pre></td></tr></table></figure>
+<p>对于第二个参数callback,请参考设置菜单的那个,一样的.对于此项的加载是针对于第一次调试的,如果你已经有过请求access_token,则不需要此项,加上只会多请求一次.</p>
+<h4 id="加载菜单">加载菜单</h4><p>由于微信规定,在使用自定义菜单的时候,隔夜才能生效,如果要立即生效,请把微信号取消关注后,重新关注即可.</p>
+<p>在文件<code>node_moudles/wechat-node/moudle/menu.json</code>中,可以进行自由配置菜单,下面贴出一则示例.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="string">"button"</span>: [&#123;</span><br><span class="line">     <span class="string">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">     <span class="string">"name"</span>: <span class="string">"今日歌曲"</span>,</span><br><span class="line">     <span class="string">"key"</span>: <span class="string">"V1001_TODAY_MUSIC"</span></span><br><span class="line">   &#125;, &#123;</span><br><span class="line">     <span class="string">"name"</span>: <span class="string">"菜单"</span>,</span><br><span class="line">     <span class="string">"sub_button"</span>: [&#123;</span><br><span class="line">       <span class="string">"type"</span>: <span class="string">"view"</span>,</span><br><span class="line">       <span class="string">"name"</span>: <span class="string">"搜索"</span>,</span><br><span class="line">       <span class="string">"url"</span>: <span class="string">"http://www.soso.com/"</span></span><br><span class="line">     &#125;, &#123;</span><br><span class="line">       <span class="string">"type"</span>: <span class="string">"view"</span>,</span><br><span class="line">       <span class="string">"name"</span>: <span class="string">"视频"</span>,</span><br><span class="line">       <span class="string">"url"</span>: <span class="string">"http://v.qq.com/"</span></span><br><span class="line">     &#125;, &#123;</span><br><span class="line">       <span class="string">"type"</span>: <span class="string">"click"</span>,</span><br><span class="line">       <span class="string">"name"</span>: <span class="string">"赞一下我们"</span>,</span><br><span class="line">       <span class="string">"key"</span>: <span class="string">"V1001_GOOD"</span></span><br><span class="line">     &#125;]</span><br><span class="line">   &#125;]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>然后在你得主文件中加入下面这句话.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wechat.use(<span class="string">"setMenu"</span>,callback);</span><br></pre></td></tr></table></figure>
+<p>第二个参数<code>callback</code>,是加载完成后微信服务器所返回的信息.有两个参数,<code>ok</code>和<code>result</code>如果成功,<code>ok</code>则为<code>true</code>,<code>result</code>为<code>ok</code>,如果失败,<code>ok</code>为<code>false</code>,<code>result</code>为错误信息.</p>
+<h4 id="数据处理">数据处理</h4><p>这块是重点,由于要进行微信端与服务器端的数据交互,所以有了此模块,这个模块将把你的交互变得十分简单.但由于时间问题(到现在开发不过几天),所以只处理了一些,我这块没有写的,还需要大家自行处理.当然,要应用此模块,需要先导入一下.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wechat.use(<span class="string">"postData"</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="发送消息">发送消息</h5><p>先写发送吧,本来应该是先写接受的,但是由于接受后总要回复个啥,所以就把发送先写了吧.在本项目中,只有被动回复,也就是用户发了个啥,然后自动回一条东西.所以说不完善,还请大家谅解,接下来会改善的.</p>
+<h6 id="文本消息">文本消息</h6><p>由于是被动回复消息,所以回复会在你的消息处理函数中,必然会存在<code>res</code>对象,回复功能我也写进<code>res</code>对象了.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.sendText(<span class="string">"你好"</span>);</span><br></pre></td></tr></table></figure>
+<p>这样就回复了一句<code>你好</code>给用户.</p>
+<h6 id="图文消息">图文消息</h6><p>图文消息的回复必须是数组,这块应该有重点 <strong>必须是数组</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">res.sendNews([</span><br><span class="line">    &#123;</span><br><span class="line">      Title : <span class="string">"demo"</span>,<span class="comment">//图文消息标题</span></span><br><span class="line">      Description : <span class="string">"demo"</span>,<span class="comment">//图文消息描述</span></span><br><span class="line">      PicUrl : <span class="string">"demo"</span>,<span class="comment">//图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200</span></span><br><span class="line">      Url : <span class="string">"demo"</span><span class="comment">//点击图文消息跳转链接</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      Title : <span class="string">"demo"</span>,<span class="comment">//图文消息标题</span></span><br><span class="line">      Description : <span class="string">"demo"</span>,<span class="comment">//图文消息描述</span></span><br><span class="line">      PicUrl : <span class="string">"demo"</span>,<span class="comment">//图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200</span></span><br><span class="line">      Url : <span class="string">"demo"</span><span class="comment">//点击图文消息跳转链接</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">  ])</span><br></pre></td></tr></table></figure>
+<p>多条图文消息信息，默认第一个对象的图片为大图,注意，如果图文数超过10，则将会无响应 </p>
+<h6 id="空回复">空回复</h6><p>空回复就是什么都不会,就是不响应,但也不能报错.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.send();</span><br></pre></td></tr></table></figure>
+<h5 id="接受消息">接受消息</h5><p>在这里我只做了常用的两种数据的接受,文本消息和按钮点击消息</p>
+<h6 id="文本消息-1">文本消息</h6><p>本项目中对于文本消息的处理有两种方式,第一种是重写处理方法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wechat.retext(<span class="function"><span class="keyword">function</span>(<span class="params">ok,req,res,result</span>)</span>&#123;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 你的代码</span><br><span class="line"> */</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>微信发送的数据已经全部封装进了result对象,下面贴出一个示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  tousername : <span class="string">"demo"</span>,<span class="comment">//开发者微信号 </span></span><br><span class="line">  fromusername : <span class="string">"demo"</span>,<span class="comment">//发送方帐号（一个OpenID） </span></span><br><span class="line">  createtime : <span class="string">"demo"</span>,<span class="comment">//消息创建时间 （整型</span></span><br><span class="line">  msgtype : <span class="string">"demo"</span>,<span class="comment">//text </span></span><br><span class="line">  content : <span class="string">"demo"</span>,<span class="comment">//文本消息内容 </span></span><br><span class="line">  msgid : <span class="string">"demo"</span><span class="comment">//消息id，64位整型 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实你只需要对其中的content进行处理就好了.里面就是用户发送来的字符串.</p>
+<p>当然还有第二种处理方式,这就简单粗暴到爆了.第二种只需要两个参数,一个对象,一个默认就可以了,具体看代码.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wechat.retext(&#123;</span><br><span class="line">      <span class="string">"你好"</span> : <span class="string">"你也好"</span>, <span class="comment">//这种前者是用户发送的数据,后面是你的服务器自动回复的数据.</span></span><br><span class="line">      <span class="string">"早上好"</span> : [</span><br><span class="line">                  &#123;</span><br><span class="line">                    Title : <span class="string">"demo"</span>,</span><br><span class="line">                    Description : <span class="string">"demo"</span>,</span><br><span class="line">                    PicUrl : <span class="string">"demo"</span>,</span><br><span class="line">                    Url : <span class="string">"demo"</span></span><br><span class="line">                  &#125;</span><br><span class="line">                ],<span class="comment">//这是图文消息,格式遵从发送图文的格式.</span></span><br><span class="line">      <span class="string">"下午好"</span> : <span class="function"><span class="keyword">function</span>(<span class="params">req,res,result</span>)</span><br><span class="line">                </span>&#123;</span><br><span class="line">                  <span class="comment">/**</span><br><span class="line">                   * 你的代码</span><br><span class="line">                   */</span></span><br><span class="line">                &#125;<span class="comment">//这是方法处理,对于要加session呀之类都可以这样处理.</span></span><br><span class="line">  &#125;,</span><br><span class="line">    <span class="string">"默认回复"</span><span class="comment">//这是第二个参数,是默认的,就是不在用户发的消息上述范围内既是默认,也可以加载机器人.当然,在这里字符串,数组(图文),函数都是可以的,同上.</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<h6 id="点击事件消息">点击事件消息</h6><p>点击事件消息在做起来其实也和文本消息没什么区别,第一种是重写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wechat.reclick(functin(ok,req,res,result)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     - 你的代码</span><br><span class="line">     */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>第二种类似于文本消息,只不过要处理的数据,不是用户发的数据,而是点击了的按钮的键</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wechat.reclick(&#123;</span><br><span class="line">      <span class="string">"V1001_TODAY_MUSIC"</span> : <span class="string">"你也好"</span>, <span class="comment">//这里的键就是在你设置菜单时的键,忘了可以翻上去看看</span></span><br><span class="line">            <span class="string">"V1001_GOOD"</span>  : [</span><br><span class="line">                              &#123;</span><br><span class="line">                                Title : <span class="string">"demo"</span>,</span><br><span class="line">                                Description : <span class="string">"demo"</span>,</span><br><span class="line">                                PicUrl : <span class="string">"demo"</span>,</span><br><span class="line">                                Url : <span class="string">"demo"</span></span><br><span class="line">                              &#125;</span><br><span class="line">                            ],</span><br><span class="line">      <span class="string">"V1001_TODAY_MUSIC"</span> : <span class="function"><span class="keyword">function</span>(<span class="params">req,res,result</span>)</span><br><span class="line">                            </span>&#123;</span><br><span class="line">                              <span class="comment">/**</span><br><span class="line">                               * 你的代码</span><br><span class="line">                               */</span></span><br><span class="line">                            &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"默认回复"</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<h6 id="默认回复">默认回复</h6><p>默认恢复就是除了文本和点击事件消息的处理,这个处理只能重写,不写的话就是默认不处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wechat.redefaultMsg(<span class="function"><span class="keyword">function</span>(<span class="params">ok,req,res,result</span>)</span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 你的代码</span><br><span class="line">     */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="session处理">session处理</h4><p>对于session相信开发者们都很熟悉,这里就不多做介绍了.这本项目中的应用就是记录用户上一次操作,从而相对应的事件.</p>
+<p>通常session写在消息处理函数中,举例说明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">wechat.retext(&#123;</span><br><span class="line">      <span class="string">"下午好"</span> : <span class="function"><span class="keyword">function</span>(<span class="params">req,res,result</span>)</span><br><span class="line">                </span>&#123;</span><br><span class="line">                  wechat.createSession(result,<span class="function"><span class="keyword">function</span>(<span class="params">req,res,result</span>)</span><br><span class="line">                    </span>&#123;</span><br><span class="line">                      <span class="comment">/**</span><br><span class="line">                       * 这个函数是用来进行用户携session访问下会触发的函数.就是用户二次访问时的处理,可以进行二次session叠加.</span><br><span class="line">                       */</span></span><br><span class="line">                    &#125;);</span><br><span class="line">                  </span><br><span class="line">                &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">    <span class="string">"默认回复"</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<p>当然这个在点击事件消息以及重写了消息处理函数中同样适用.session默认保存时间是60秒,你也可以改.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wechat.setTime(<span class="number">5000</span>);<span class="comment">//参数为秒数.</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他函数">其他函数</h3><p>这里还有别的函数方便大家的使用,我简单介绍一下</p>
+<h4 id="获取access_token">获取access_token</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wechat.getToken(<span class="function"><span class="keyword">function</span>(<span class="params">ok,result</span>)</span>&#123;</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 你的代码,result为获取到的access_token</span><br><span class="line">   */</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="刷新access_token">刷新access_token</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wechat.reflushToken(<span class="function"><span class="keyword">function</span>(<span class="params">ok,result</span>)</span>&#123;</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 你的代码,其中result为新的access_token,同事也会刷新本地保存的access_token.</span><br><span class="line">   */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>当然,access_token是到时间自动获取刷新的,这块只是说特殊情况下这样.</p>
+<h4 id="设置菜单">设置菜单</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wechat.setMenu(<span class="function"><span class="keyword">function</span>(<span class="params">ok,result</span>)</span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 你的代码,;这里result为错误信息,成功返回ok.</span><br><span class="line">     */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="获取菜单">获取菜单</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wechat.getMenu(<span class="function"><span class="keyword">function</span>(<span class="params">ok,result</span>)</span>&#123;</span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 你的代码,这里result为你获取的菜单对象,格式为之前设置的格式.</span><br><span class="line">   */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="将json对象转换为微信可识别的xml对象">将json对象转换为微信可识别的xml对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tool = <span class="built_in">require</span>(<span class="string">"node_modules/wechat-node/module/tool.js"</span>);</span><br><span class="line">tool.jsonToXml(&#123;&#125;);<span class="comment">//参数为你要转换的json,返回值为转换好的xml</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用示例">使用示例</h2><p>如果有兴趣的朋友,请大家关注我的博客,我接下来会在博客上发布一个小案列,通过案例让大家更加清楚地了解本项目.谢谢浏览.<br>博客地址 <a href="http://north.gitcafe.io" target="_blank" rel="external">http://north.gitcafe.io</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag">#node</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/wechat/" rel="tag">#wechat</a>
+          
+            <a href="/tags/wechat-node/" rel="tag">#wechat-node</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/25/安装hexo/" rel="next" title="安装hexo">
+                <i class="fa fa-chevron-left"></i> 安装hexo
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/07/基于nodejs-express-wechat-nodee开发的西邮图书馆/" rel="prev" title="基于nodejs express&wechat-nodee开发的西邮图书馆">
+                基于nodejs express&wechat-nodee开发的西邮图书馆 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/03/wechat-node/"
+           data-title="wechat-node" data-url="http://yoursite.com/2015/12/03/wechat-node/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mo_North" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mo_North</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/MoNorth" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://xiyoumobile.com" target="_blank">西邮移动应用开发实验室</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lyh__521" target="_blank">本山的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.xxput.com" target="_blank">小鑫的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yes_i_am" target="_blank">巨龙的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信后台开发nodejs模块"><span class="nav-number">1.</span> <span class="nav-text">微信后台开发nodejs模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#git_clone_地址"><span class="nav-number">1.1.</span> <span class="nav-text">git clone 地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本组件"><span class="nav-number">1.3.2.</span> <span class="nav-text">基本组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#微信认证"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">微信认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载access_token"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">加载access_token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载菜单"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">加载菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据处理"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#发送消息"><span class="nav-number">1.3.2.4.1.</span> <span class="nav-text">发送消息</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#文本消息"><span class="nav-number">1.3.2.4.1.1.</span> <span class="nav-text">文本消息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#图文消息"><span class="nav-number">1.3.2.4.1.2.</span> <span class="nav-text">图文消息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#空回复"><span class="nav-number">1.3.2.4.1.3.</span> <span class="nav-text">空回复</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#接受消息"><span class="nav-number">1.3.2.4.2.</span> <span class="nav-text">接受消息</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#文本消息-1"><span class="nav-number">1.3.2.4.2.1.</span> <span class="nav-text">文本消息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#点击事件消息"><span class="nav-number">1.3.2.4.2.2.</span> <span class="nav-text">点击事件消息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#默认回复"><span class="nav-number">1.3.2.4.2.3.</span> <span class="nav-text">默认回复</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session处理"><span class="nav-number">1.3.2.5.</span> <span class="nav-text">session处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">其他函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取access_token"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">获取access_token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#刷新access_token"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">刷新access_token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置菜单"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">设置菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取菜单"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">获取菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将json对象转换为微信可识别的xml对象"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">将json对象转换为微信可识别的xml对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用示例"><span class="nav-number">1.4.</span> <span class="nav-text">使用示例</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mo_North</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"north"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

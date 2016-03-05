@@ -1,0 +1,747 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="c语言,二叉排序树,红黑树的建立," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="红黑树的建立这个红黑树真是搞的我欲罢不能啊。相比起AVL树，我倒是真没瞧出来它到底哪点好了，又麻烦，建的有没有AVL树够平衡，可它非得是那么的火。查了不少资料，各位博主好像都提到了它的统计性比较高，恕我愚昧，这点就看不透了。反正我今晚上搞它是搞的相当痛苦。终于功夫不负有心人，代码是写出来了，可惜不太美观，我也懒得改了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构建红黑树">
+<meta property="og:url" content="http://yoursite.com/2016/01/20/构建红黑树/index.html">
+<meta property="og:site_name" content="Mo_North">
+<meta property="og:description" content="红黑树的建立这个红黑树真是搞的我欲罢不能啊。相比起AVL树，我倒是真没瞧出来它到底哪点好了，又麻烦，建的有没有AVL树够平衡，可它非得是那么的火。查了不少资料，各位博主好像都提到了它的统计性比较高，恕我愚昧，这点就看不透了。反正我今晚上搞它是搞的相当痛苦。终于功夫不负有心人，代码是写出来了，可惜不太美观，我也懒得改了。">
+<meta property="og:updated_time" content="2016-01-20T04:32:31.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="构建红黑树">
+<meta name="twitter:description" content="红黑树的建立这个红黑树真是搞的我欲罢不能啊。相比起AVL树，我倒是真没瞧出来它到底哪点好了，又麻烦，建的有没有AVL树够平衡，可它非得是那么的火。查了不少资料，各位博主好像都提到了它的统计性比较高，恕我愚昧，这点就看不透了。反正我今晚上搞它是搞的相当痛苦。终于功夫不负有心人，代码是写出来了，可惜不太美观，我也懒得改了。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 构建红黑树 | Mo_North </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mo_North</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                构建红黑树
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-20T00:39:21+08:00" content="2016-01-20">
+              2016-01-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/树/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/20/构建红黑树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/20/构建红黑树/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="红黑树的建立">红黑树的建立</h1><p>这个红黑树真是搞的我欲罢不能啊。相比起AVL树，我倒是真没瞧出来它到底哪点好了，又麻烦，建的有没有AVL树够平衡，可它非得是那么的火。查了不少资料，各位博主好像都提到了它的统计性比较高，恕我愚昧，这点就看不透了。反正我今晚上搞它是搞的相当痛苦。终于功夫不负有心人，代码是写出来了，可惜不太美观，我也懒得改了。</p>
+<a id="more"></a>
+<h2 id="红黑树定义">红黑树定义</h2><p>红黑树的定义大致有5点，我简单说一下。</p>
+<ol>
+<li>节点不是红的就是黑的，没有别的颜色，也必须有颜色。</li>
+<li>根节点必须是黑的。</li>
+<li>所有的叶子节点(这里的叶子节点不是真正的节点，对比AVL树而言，就是给每个叶子节点加左右两个空节点)为NULL且是黑的。</li>
+<li>所有红色节点的子节点必须是黑的。</li>
+<li>从任何一个节点到叶子节点的路劲上包含的黑色节点的个数是相同的。</li>
+</ol>
+<h2 id="红黑树与AVL树从定义上稍微比较">红黑树与AVL树从定义上稍微比较</h2><p>AVL树的平衡因子绝对值最大为1，保证了搜索复杂度保持在O(lgn);</p>
+<p>而红黑树的子树深度只差只是不会超过两倍，这点从定义4和定义5结合可以看出来，看不出来的请联系自己的数学老师。这块就不说了。所以说他的搜索时间复杂度也比较低（相比十分不平衡的二叉树）。所以也可以看出来，红黑树的平衡程度肯定是不如AVL树的。根据各位博主的言论，可以将它的时间复杂度也定为O(lgn),我就没兴趣算算了。</p>
+<h2 id="构建原理">构建原理</h2><p>构建过程基本与上篇构建AVL树相似，这块就不画图了，主要不同的地方就在于它的旋转条件。说到这想起来，红黑树一个我比较认同的优点。就是AVL的平衡过程就是需要旋转的次数是不一定的，而红黑树却可以保证它每次最多旋转3次就可是使之平衡，当然，这里的平衡指的是红黑树的平衡。不要感觉3次很牛逼了，也存在更少次数的算法，可惜太复杂，这里不做研究。说一下基本流程和思路吧。</p>
+<ol>
+<li>将节点插入树中。当然是根据二叉排序树的定义插入。</li>
+<li>将新插入的节点染成红色。</li>
+<li>对其进行平衡校验，完成相应的处理使之平衡。</li>
+</ol>
+<p>这里解释一下，为什么要将新节点染成红色呢。原因其实很简单。因为第一，它总得有个颜色，第二，如果染成黑色，那么将违背定义5，并且不好矫正。但是如果是红的，只可能违背定义2和4.违背2就很好处理，直接染黑就行了，违背4，也只需要几步调整罢了。好了，那么接下来才是重点，重点说红黑树的平衡校验。</p>
+<h2 id="平衡处理">平衡处理</h2><p>红黑树插入一个节点后基本分为五种情况，每种情况都有一种处理，下面简单看一下，就不画图了。详情可以参考维基百科。</p>
+<ol>
+<li>插入的是根节点，违背的定义1，处理方法就是直接将其染黑。</li>
+<li>插入的节点的父节点为黑色，那么不违背任何定义，所以不做处理。</li>
+<li>插入的父节点为红色，且父节点的兄弟节点也为红色。违背的定义4，那么就将其父节点和父节点的兄弟节点直接染黑，然后将它的父节点的父节点（祖父节点）染成红色。（不要问我为什么它会有祖父节点且不是红的，不明白的好好研究研究定义）。</li>
+<li>插入的父节点是红的，父节点的兄弟节点是黑的，并且是顺边。意思就是父节点是祖父节点的左孩子，且它是父节点的左孩子，或者父节点是祖父节点的右孩子，且它是父节点的右孩子，那么就进行旋转。左孩子就是LL旋转（LL，RR，LR，RL是什么不知道的请参考我上篇AVL树），右孩子就是RR旋转。都是以祖父节点为节点旋转的，这点不能错。</li>
+<li>插入的父节点是红的，父节点的兄弟节点是黑的，不是顺便。那么父节点是祖父节点的左孩子，自己是父节点的右孩子就LR旋转，父节点是祖父节点的右孩子，自己是父节点的左孩子就RL旋转。还是以祖父节点为节点旋转。</li>
+</ol>
+<p>大致思路就是这样，认真理解定义，这五种情况再画画图，很好理解。</p>
+<h2 id="上代码">上代码</h2><h3 id="结构体">结构体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Node&#123;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">int</span> color; <span class="comment">//0为黑，1为红 </span></span><br><span class="line">	<span class="keyword">struct</span> Node * lNode;</span><br><span class="line">	<span class="keyword">struct</span> Node * rNode;</span><br><span class="line">	<span class="keyword">struct</span> Node * pNode; <span class="comment">//为了更简单 </span></span><br><span class="line">&#125;Node,*Tree;</span><br></pre></td></tr></table></figure>
+<h3 id="四种旋转">四种旋转</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右右旋转 </span></span><br><span class="line"><span class="function">Tree <span class="title">RR</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	Tree oldRoot,oldRightLeft,P;</span><br><span class="line">	oldRoot = root;</span><br><span class="line">	root-&gt;color = <span class="number">1</span>;</span><br><span class="line">	P = root-&gt;pNode;</span><br><span class="line">	root = root-&gt;rNode;</span><br><span class="line">	oldRoot-&gt;pNode = root;</span><br><span class="line">	oldRightLeft = root-&gt;lNode;</span><br><span class="line">	<span class="keyword">if</span>(oldRightLeft != <span class="literal">NULL</span>)</span><br><span class="line">		oldRightLeft-&gt;pNode = oldRoot;</span><br><span class="line">	root-&gt;lNode = oldRoot;</span><br><span class="line">	oldRoot-&gt;rNode = oldRightLeft;</span><br><span class="line">	root-&gt;pNode = P;</span><br><span class="line">	root-&gt;color = <span class="number">0</span>;</span><br><span class="line">	oldRoot-&gt;pNode = root;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//左左旋转</span></span><br><span class="line"><span class="function">Tree <span class="title">LL</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	Tree oldRoot,oldLeftRight,P;</span><br><span class="line">	oldRoot = root;</span><br><span class="line">	root-&gt;color = <span class="number">1</span>;</span><br><span class="line">	P = root-&gt;pNode;</span><br><span class="line">	root = root-&gt;lNode;</span><br><span class="line">	oldLeftRight = root-&gt;rNode;</span><br><span class="line">	<span class="keyword">if</span>(oldLeftRight != <span class="literal">NULL</span>)</span><br><span class="line">		oldLeftRight-&gt;pNode = oldRoot;</span><br><span class="line">	root-&gt;rNode = oldRoot;</span><br><span class="line">	oldRoot-&gt;lNode = oldLeftRight;</span><br><span class="line">	root-&gt;pNode = P;</span><br><span class="line">	root-&gt;color = <span class="number">0</span>;</span><br><span class="line">	oldRoot-&gt;pNode = root;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//右左旋转</span></span><br><span class="line"><span class="function">Tree <span class="title">RL</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	root-&gt;rNode = LL(root-&gt;rNode);</span><br><span class="line">	<span class="keyword">return</span> RR(root);</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//左右旋转</span></span><br><span class="line"><span class="function">Tree <span class="title">LR</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	root-&gt;lNode = RR(root-&gt;lNode);</span><br><span class="line">	<span class="keyword">return</span> LL(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五种情况的处理">五种情况的处理</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fix</span><span class="params">(Tree root,Tree R)</span></span>&#123;</span><br><span class="line">	Tree pNode,uNode,gNode;</span><br><span class="line">	<span class="keyword">if</span>(root-&gt;color == <span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(root-&gt;pNode == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		R-&gt;pNode = root;</span><br><span class="line">		root-&gt;color = <span class="number">0</span>;	<span class="comment">//情况一</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		pNode = root-&gt;pNode;</span><br><span class="line">		<span class="keyword">if</span>(pNode-&gt;color == <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span>;			<span class="comment">//情况二</span></span><br><span class="line">		gNode = pNode-&gt;pNode;</span><br><span class="line">		<span class="keyword">if</span>(gNode == <span class="literal">NULL</span>)</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		uNode = gNode-&gt;lNode == pNode ? gNode-&gt;rNode : gNode-&gt;lNode;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(uNode != <span class="literal">NULL</span> &amp;&amp; uNode-&gt;color == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			pNode-&gt;color = <span class="number">0</span>;</span><br><span class="line">			uNode-&gt;color = <span class="number">0</span>;</span><br><span class="line">			gNode-&gt;color = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">return</span>;			<span class="comment">//情况三</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(gNode-&gt;lNode == pNode)	<span class="comment">//情况四和五的结合，代码不好，能运行，懒得优化</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(pNode-&gt;lNode == root)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(gNode-&gt;pNode == <span class="literal">NULL</span>)</span><br><span class="line">					R-&gt;pNode = 	LL(gNode);</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(gNode-&gt;pNode-&gt;lNode == gNode)</span><br><span class="line">					gNode-&gt;pNode-&gt;lNode = LL(gNode);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					gNode-&gt;pNode-&gt;rNode = LL(gNode);					</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(gNode-&gt;pNode == <span class="literal">NULL</span>)</span><br><span class="line">					R-&gt;pNode = 	LR(gNode);</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(gNode-&gt;pNode-&gt;lNode == gNode)</span><br><span class="line">					gNode-&gt;pNode-&gt;lNode = LR(gNode);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					gNode-&gt;pNode-&gt;rNode = LR(gNode);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(pNode-&gt;lNode == root)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(gNode-&gt;pNode == <span class="literal">NULL</span>)</span><br><span class="line">					R-&gt;pNode = 	RL(gNode);</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(gNode-&gt;pNode-&gt;lNode == gNode)</span><br><span class="line">					gNode-&gt;pNode-&gt;lNode = RL(gNode);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					gNode-&gt;pNode-&gt;rNode = RL(gNode);					</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(gNode-&gt;pNode == <span class="literal">NULL</span>)</span><br><span class="line">					R-&gt;pNode = 	RR(gNode);</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span>(gNode-&gt;pNode-&gt;lNode == gNode)</span><br><span class="line">					gNode-&gt;pNode-&gt;lNode = RR(gNode);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					gNode-&gt;pNode-&gt;rNode = RR(gNode);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="构建代码">构建代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">CreateRBT</span><span class="params">(Tree P,Tree root,<span class="keyword">int</span> data,Tree R)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;	</span><br><span class="line">		root = (Tree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">		root-&gt;pNode = P;</span><br><span class="line">		root-&gt;lNode = <span class="literal">NULL</span>;</span><br><span class="line">		root-&gt;rNode = <span class="literal">NULL</span>;</span><br><span class="line">		root-&gt;data = data;</span><br><span class="line">		root-&gt;color = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(P != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(data &gt; P-&gt;data)</span><br><span class="line">				P-&gt;rNode = root;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				P-&gt;lNode = root;			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(data &gt; root-&gt;data)</span><br><span class="line">			node = CreateRBT(root,root-&gt;rNode,data,R);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			node = CreateRBT(root,root-&gt;lNode,data,R);</span><br><span class="line">	&#125;		</span><br><span class="line">	fix(root,R);</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试示例，输出先序和中序">测试示例，输出先序和中序</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Tree R = (Tree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));<span class="comment">//由于根节点不好控制，所以我用了一个结构体专门用于引用根</span></span><br><span class="line">	<span class="keyword">int</span> a[] = &#123;<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>&#125;,i;</span><br><span class="line">	R-&gt;pNode = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		CreateRBT(<span class="literal">NULL</span>,R-&gt;pNode,a[i],R);</span><br><span class="line">	&#125;</span><br><span class="line">	PreOrder(R-&gt;pNode);<span class="comment">//根节点是R-&gt;pNode</span></span><br><span class="line">	InOrder(R-&gt;pNode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小结">小结</h2><p>感觉真的没有AVL树好写，不管怎么样，大家还是凑合着看吧，不枉我大半夜码字和码代码这么长时间。至于红黑树的节点删除和AVL树的节点删除，我后续会继续奉上。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c语言/" rel="tag">#c语言</a>
+          
+            <a href="/tags/二叉排序树/" rel="tag">#二叉排序树</a>
+          
+            <a href="/tags/红黑树的建立/" rel="tag">#红黑树的建立</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/18/构建AVL树/" rel="next" title="构建AVL树">
+                <i class="fa fa-chevron-left"></i> 构建AVL树
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/04/堆排序/" rel="prev" title="堆排序">
+                堆排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/20/构建红黑树/"
+           data-title="构建红黑树" data-url="http://yoursite.com/2016/01/20/构建红黑树/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mo_North" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mo_North</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/MoNorth" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://xiyoumobile.com" target="_blank">西邮移动应用开发实验室</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lyh__521" target="_blank">本山的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.xxput.com" target="_blank">小鑫的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yes_i_am" target="_blank">巨龙的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#红黑树的建立"><span class="nav-number">1.</span> <span class="nav-text">红黑树的建立</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树定义"><span class="nav-number">1.1.</span> <span class="nav-text">红黑树定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#红黑树与AVL树从定义上稍微比较"><span class="nav-number">1.2.</span> <span class="nav-text">红黑树与AVL树从定义上稍微比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建原理"><span class="nav-number">1.3.</span> <span class="nav-text">构建原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡处理"><span class="nav-number">1.4.</span> <span class="nav-text">平衡处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上代码"><span class="nav-number">1.5.</span> <span class="nav-text">上代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结构体"><span class="nav-number">1.5.1.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四种旋转"><span class="nav-number">1.5.2.</span> <span class="nav-text">四种旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五种情况的处理"><span class="nav-number">1.5.3.</span> <span class="nav-text">五种情况的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建代码"><span class="nav-number">1.5.4.</span> <span class="nav-text">构建代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试示例，输出先序和中序"><span class="nav-number">1.5.5.</span> <span class="nav-text">测试示例，输出先序和中序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.6.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mo_North</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"north"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
