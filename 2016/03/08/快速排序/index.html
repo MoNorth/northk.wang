@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c语言,二分查找,查找," />
+  <meta name="keywords" content="c语言,快速排序,排序," />
 
 
 
@@ -51,16 +51,16 @@
 
 
 
-<meta name="description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
+<meta name="description" content="快速排序(快排)快排可以说是相当流行的排序算法了，随便一搜一大堆讲解，我这也就不多说了，贴个代码，贴个步骤吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二分查找">
-<meta property="og:url" content="http://yoursite.com/2016/02/19/二分查找/index.html">
+<meta property="og:title" content="快速排序">
+<meta property="og:url" content="http://yoursite.com/2016/03/08/快速排序/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
-<meta property="og:updated_time" content="2016-02-19T13:47:40.372Z">
+<meta property="og:description" content="快速排序(快排)快排可以说是相当流行的排序算法了，随便一搜一大堆讲解，我这也就不多说了，贴个代码，贴个步骤吧。">
+<meta property="og:updated_time" content="2016-03-08T10:16:24.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二分查找">
-<meta name="twitter:description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
+<meta name="twitter:title" content="快速排序">
+<meta name="twitter:description" content="快速排序(快排)快排可以说是相当流行的排序算法了，随便一搜一大堆讲解，我这也就不多说了，贴个代码，贴个步骤吧。">
 
 
 
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title> 二分查找 | Mo_North </title>
+  <title> 快速排序 | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +212,7 @@
             
             
               
-                二分查找
+                快速排序
               
             
           </h1>
@@ -221,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-02-19T21:33:01+08:00" content="2016-02-19">
-              2016-02-19
+            <time itemprop="dateCreated" datetime="2016-03-08T18:09:59+08:00" content="2016-03-08">
+              2016-03-08
             </time>
           </span>
 
@@ -231,8 +231,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/查找/" itemprop="url" rel="index">
-                    <span itemprop="name">查找</span>
+                  <a href="/categories/排序/" itemprop="url" rel="index">
+                    <span itemprop="name">排序</span>
                   </a>
                 </span>
 
@@ -247,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/19/二分查找/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/19/二分查找/" itemprop="commentsCount"></span>
+                <a href="/2016/03/08/快速排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/快速排序/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,20 +267,17 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="二分查找（折半查找）">二分查找（折半查找）</h1><p>感觉将二分查找称呼为折半查找的话，思想一下子就出来了。</p>
+        <span itemprop="articleBody"><h1 id="快速排序(快排)">快速排序(快排)</h1><p>快排可以说是相当流行的排序算法了，随便一搜一大堆讲解，我这也就不多说了，贴个代码，贴个步骤吧。</p>
 <a id="more"></a>
-<p>二分查找可以说是应用相当广泛的一种查找了，它是基于有序序列的一种高效查找，时间复杂度为O(logN)，而且基本思想很是广泛。但由于应用众多，所以在二分查找的基础上，衍生了很多相关的变形，在此这些就不一一介绍了，我只想说，别把二分想的那么简单。</p>
-<h1 id="思想">思想</h1><h2 id="简单一说">简单一说</h2><p>根据字面意思而言，二分查找，折半查找。无非就是将数列一半一半的去找，其实就是这样。先取出数列（升序）最中间的数字与待查数进行比较，如果待查数字较大，则将以刚才的中间数为起点，选取整个数列的后一半作为整个数列，再重复上述步骤，直到找到数字或者一直将树列划分到没有。</p>
-<h2 id="举例">举例</h2><p>数列 <code>1 2 3 4 5 6</code></p>
-<p>待查数 <code>5</code></p>
+<h1 id="代码">代码</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">qsort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> begin,<span class="keyword">int</span> end)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = begin, j = end, num = arr[begin];</span><br><span class="line">	<span class="keyword">if</span>(begin &lt; end)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(j &gt; i)</span><br><span class="line">		&#123;</span><br><span class="line">				<span class="keyword">while</span>(j &gt; i &amp;&amp; arr[j] &gt;= num)</span><br><span class="line">					j --;</span><br><span class="line">				<span class="keyword">if</span>(j &gt; i)</span><br><span class="line">				&#123;</span><br><span class="line">					arr[i] = arr[j];</span><br><span class="line">					i ++;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">while</span>(j &gt; i &amp;&amp; arr[i] &lt; num)</span><br><span class="line">					i ++;</span><br><span class="line">				<span class="keyword">if</span>(j &gt; i)</span><br><span class="line">				&#123;</span><br><span class="line">					arr[j] = arr[i];</span><br><span class="line">					j --;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		arr[i] = num;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,a[i]);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">		qsort(arr, begin, i - <span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">		qsort(arr, i + <span class="number">1</span>, end);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="步骤">步骤</h1><p>数列定为<code>3,5,2,4,6,2</code>,下面列出每一趟的结果。</p>
 <ol>
-<li>选取中间数 <code>4</code>与待查数作比较（由于是六个数，选取中间索引为3，所以中间数为4）;</li>
-<li><code>4 &lt; 5</code> 所以选取数列后半段作为整个数列。新数列 <code>4 5 6</code>;</li>
-<li>选取中间数 <code>5</code>与待查数进行比较;</li>
-<li>查找成功。 </li>
+<li><code>2       2       3       4       6       5</code></li>
+<li><code>2       2       3       4       6       5</code></li>
+<li><code>2       2       3       4       6       5</code></li>
+<li><code>2       2       3       4       5       6</code></li>
+<li><code>2       2       3       4       5       6</code></li>
 </ol>
-<h1 id="代码">代码</h1><p>基本思想比较简单，就不多说了，直接上代码。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiSearch</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n,<span class="keyword">int</span> key)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,min = <span class="number">0</span>,max = n,mid;</span><br><span class="line">	<span class="keyword">while</span>(max &gt; min)</span><br><span class="line">	&#123;</span><br><span class="line">		mid = (max + min) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(arr[mid] == key)</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(arr[mid] &gt; key)</span><br><span class="line">			max = mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(min == mid)</span><br><span class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			min = mid; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -291,9 +288,9 @@
           
             <a href="/tags/c语言/" rel="tag">#c语言</a>
           
-            <a href="/tags/二分查找/" rel="tag">#二分查找</a>
+            <a href="/tags/快速排序/" rel="tag">#快速排序</a>
           
-            <a href="/tags/查找/" rel="tag">#查找</a>
+            <a href="/tags/排序/" rel="tag">#排序</a>
           
         </div>
       
@@ -302,17 +299,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/18/桶排序/" rel="next" title="桶排序">
-                <i class="fa fa-chevron-left"></i> 桶排序
+              <a href="/2016/03/05/学习Reactjs笔记/" rel="next" title="学习Reactjs笔记">
+                <i class="fa fa-chevron-left"></i> 学习Reactjs笔记
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/05/学习Reactjs笔记/" rel="prev" title="学习Reactjs笔记">
-                学习Reactjs笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -339,8 +332,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/19/二分查找/"
-           data-title="二分查找" data-url="http://yoursite.com/2016/02/19/二分查找/">
+      <div class="ds-thread" data-thread-key="2016/03/08/快速排序/"
+           data-title="快速排序" data-url="http://yoursite.com/2016/03/08/快速排序/">
       </div>
     
   </div>
@@ -459,7 +452,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二分查找（折半查找）"><span class="nav-number">1.</span> <span class="nav-text">二分查找（折半查找）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单一说"><span class="nav-number">2.1.</span> <span class="nav-text">简单一说</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速排序(快排)"><span class="nav-number">1.</span> <span class="nav-text">快速排序(快排)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">3.</span> <span class="nav-text">步骤</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
