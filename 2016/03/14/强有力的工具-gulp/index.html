@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DOM,HTML+CSS+JS,Reactjs,前端,前端优化," />
+  <meta name="keywords" content="DOM,HTML+CSS+JS,Reactjs,gulp,nodejs,webpack,前端,前端优化,工具," />
 
 
 
@@ -51,26 +51,16 @@
 
 
 
-<meta name="description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
+<meta name="description" content="强有力的构建工具–Gulp我想一个前端人员不会用一款强有力的构建工具，简直就是一个超级大的失误了。当然，我不是盲目的推荐gulp,其他的也可以啦，只要用着顺手就行了。其实我之前也用gulp好久了，不过一直做的工作只不过是Less的编译。我想用过Less的人不会再去想用CSS了吧。不过我今天介绍的重点是配合Reactjs使用.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="reactjs组件划分">
-<meta property="og:url" content="http://yoursite.com/2016/03/10/reactjs组件划分/index.html">
+<meta property="og:title" content="强有力的工具--gulp">
+<meta property="og:url" content="http://yoursite.com/2016/03/14/强有力的工具-gulp/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs1.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs2.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-2.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-3.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-4.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-5.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-6.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-7.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-8.png">
-<meta property="og:updated_time" content="2016-03-10T09:05:04.669Z">
+<meta property="og:description" content="强有力的构建工具–Gulp我想一个前端人员不会用一款强有力的构建工具，简直就是一个超级大的失误了。当然，我不是盲目的推荐gulp,其他的也可以啦，只要用着顺手就行了。其实我之前也用gulp好久了，不过一直做的工作只不过是Less的编译。我想用过Less的人不会再去想用CSS了吧。不过我今天介绍的重点是配合Reactjs使用.">
+<meta property="og:updated_time" content="2016-03-14T08:24:21.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="reactjs组件划分">
-<meta name="twitter:description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
+<meta name="twitter:title" content="强有力的工具--gulp">
+<meta name="twitter:description" content="强有力的构建工具–Gulp我想一个前端人员不会用一款强有力的构建工具，简直就是一个超级大的失误了。当然，我不是盲目的推荐gulp,其他的也可以啦，只要用着顺手就行了。其实我之前也用gulp好久了，不过一直做的工作只不过是Less的编译。我想用过Less的人不会再去想用CSS了吧。不过我今天介绍的重点是配合Reactjs使用.">
 
 
 
@@ -82,7 +72,7 @@
   };
 </script>
 
-  <title> reactjs组件划分 | Mo_North </title>
+  <title> 强有力的工具--gulp | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +212,7 @@
             
             
               
-                reactjs组件划分
+                强有力的工具--gulp
               
             
           </h1>
@@ -231,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-03-10T15:48:08+08:00" content="2016-03-10">
-              2016-03-10
+            <time itemprop="dateCreated" datetime="2016-03-14T13:53:44+08:00" content="2016-03-14">
+              2016-03-14
             </time>
           </span>
 
@@ -241,8 +231,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Reactjs/" itemprop="url" rel="index">
-                    <span itemprop="name">Reactjs</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -257,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/10/reactjs组件划分/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/reactjs组件划分/" itemprop="commentsCount"></span>
+                <a href="/2016/03/14/强有力的工具-gulp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/14/强有力的工具-gulp/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -277,45 +267,44 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Reactjs组件的划分">Reactjs组件的划分</h1><p>学习<code>React</code>也已经有一段时间，总感觉是野路子多点，毕竟<code>React</code>用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，<code>React</code>简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起<code>React</code>就一句话，妈妈再也不用担心我的单页面大数据了！</p>
+        <span itemprop="articleBody"><h1 id="强有力的构建工具–Gulp">强有力的构建工具–Gulp</h1><p>我想一个前端人员不会用一款强有力的构建工具，简直就是一个超级大的失误了。当然，我不是盲目的推荐gulp,其他的也可以啦，只要用着顺手就行了。其实我之前也用gulp好久了，不过一直做的工作只不过是Less的编译。我想用过Less的人不会再去想用CSS了吧。不过我今天介绍的重点是配合Reactjs使用.</p>
 <a id="more"></a>
-<h2 id="浅谈React组件化编程">浅谈React组件化编程</h2><p>首先引用 <a href="http://reactjs.cn/react/docs/why-react.html" target="_blank" rel="external">官网</a> 上的一句话：</p>
-<blockquote>
-<p>React都是关于构建可复用的组件。事实上，通过React你唯一要做的事情就是构建组件。得益于其良好的封装性，组件使代码复用、测试和关注分离（separation of concerns）更加简单。</p>
-</blockquote>
-<p>在我的实际使用中更加深入的理解了这句话的含义。React就是组件化的编程，越来越像客户端了。组件可以复用，可以嵌套，在实际生产中这样做也大大节省可代码量，也是你的代码看上去更加整洁。可是，上述的一切都是在你的组件划分还算ok的基础上说的。如果组件划分的一塌糊涂，就别提怎么复用嵌套了。腾讯的面试官曾经问我React时问道：你的React项目组件是怎么划分的。所以说，React的组件划分真的很重要。</p>
-<h3 id="React官网例子">React官网例子</h3><p><a href="http://reactjs.cn/react/docs/thinking-in-react.html" target="_blank" rel="external">React官网连接</a></p>
-<p>UI设计 ： <img src="/images/2016-3-10-reactjs1.png" alt="UI"></p>
-<blockquote>
-<p>你要做的第一件事是，为所有组件（及子组件）命名并画上线框图。假如你和设计师一起工作，也许他们已经完成了这项工作，所以赶紧去跟他们沟通！他们的 Photoshop 图层名也许最终可以直接用于你的 React 组件名。</p>
-<p>然而你如何知道哪些才能成为组件？想象一下，当你创建一些函数或对象时，用到一些类似的技术。其中一项技术就是单一功能原则，指的是，理想状态下一个组件应该只做一件事，假如它功能逐渐变大就需要被拆分成更小的子组件。</p>
-<p>由于你经常需要将一个JSON数据模型展示给用户，因此你需要检查这个模型结构是否正确以便你的 UI （在这里指组件结构）是否能够正确的映射到这个模型上。这是因为用户界面和数据模型在 信息构造 方面都要一致，这意味着将你可以省下很多将 UI 分割成组件的麻烦事。你需要做的仅仅只是将数据模型分隔成一小块一小块的组件，以便它们都能够表示成组件。</p>
-</blockquote>
-<p>组件划分 ： <img src="/images/2016-3-10-reactjs2.png" alt="组件"></p>
-<h3 id="随便谈谈">随便谈谈</h3><p>其实人家已经讲的很清楚了，组件的划分只要把握住了<strong>单一功能原则</strong>,基本上也就没有什么问题了。下面我就简单谈一下我的看法吧。<strong>这只是我的看法，不具备权威性</strong></p>
+<h2 id="安装">安装</h2><p>gulp是基于Node的一款前端构建工具，所以想要安装gulp的前提就是你拥有Node的环境。Node环境的配置这里就不多提了，我之前的博客也有提到过，大家可以去翻翻。</p>
 <ol>
-<li>从最重要并最小的单元开始划分</li>
-<li>找出与之相关并行使相同职能并且可以一起重复使用的元素。</li>
-<li>将其看为组一，找寻其父级元素。</li>
-<li>查找其父级元素是否包含除组一外的其它元素。</li>
-<li>如果不存在，就继续找寻其父级，直至有其他元素包含在其父级或已为最顶级元素。</li>
-<li>如果包含其他元素，就以其他元素为组二。并在其他元素中找寻最重要并最小的单元从，重复以上步骤。</li>
+<li><p>Windows环境打开你的<code>git bash</code>或者<code>cmd</code>，Linux打开你的终端。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure>
+<p>全局安装gulp，为的是方便使用gulp命令</p>
+</li>
+<li>然后在你的项目中安装如下工具(可选，根据你的需求。我这里只提供我常用的)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp --save-dev</span><br><span class="line">npm install gulp-less --save-dev    //Less编译</span><br><span class="line">npm install gulp-minify --save-dev  //css压缩</span><br><span class="line">npm install gulp-concat --save-dev  //文件合并</span><br><span class="line">npm install gulp-rename --save-dev  //文件重命名</span><br><span class="line">npm install gulp-uglify --save-dev  //js压缩</span><br><span class="line">npm install gulp-htmlmin --save-dev //html压缩</span><br><span class="line">npm install gulp-webpack --save-dev //webpack本就是一个很强大的工具。我这块只用于编译JSX,解析Commandjs规范</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<p>简单来说就是这样了。下面就演示一下吧。</p>
-<h3 id="演示">演示</h3><p>UI : <img src="/images/2016-3-10-reactjs3.png" alt="UI"></p>
-<p>图片不是很清晰，还请见谅。</p>
-<p>分析 ：</p>
+<h2 id="先说gulp-webpack">先说gulp-webpack</h2><p>要使用gulp-webpack,就要和使用webpack一样，先做一个配置文件<code>webpack.config</code>，由于我只是用其一部分（可以说只是用编译JSX的工具），所以我只介绍这一部分，其他组件的使用方式基本相似，我没有测试，所以也就不提了。</p>
 <ol>
-<li>找出最重要最小的元素，无可置疑，肯定是内容了。<br><img src="/images/2016-3-10-reactjs3-2.png" alt="img"></li>
-<li>找出其与之相关并行使相同职能的元素。就是后面的图片<br><img src="/images/2016-3-10-reactjs3-3.png" alt="img"></li>
-<li>寻找其父级元素<br><img src="/images/2016-3-10-reactjs3-4.png" alt="img"></li>
-<li>它并没有其它的子元素了，那就继续寻找它的父级。<br><img src="/images/2016-3-10-reactjs3-5.png" alt="img"></li>
-<li>它的顶部一个图片轮询，先将其也化为一个组<br><img src="/images/2016-3-10-reactjs3-6.png" alt="img"></li>
-<li>现在将其看作整体，查看它内部最重要最小的元素，就是它本身，那么就不用继续了。接着找绿色组的父级<br><img src="/images/2016-3-10-reactjs3-7.png" alt="img"></li>
-<li>它的顶部和底部有标题栏和导航栏。将其分别化成组。<br><img src="/images/2016-3-10-reactjs3-8.png" alt="img"></li>
-<li>接下来就是以这两个组为整体，分别继续划分。我这里就不多化了。</li>
+<li><p>安装组件<code>jsx-loader</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jsx-loader --save-dev</span><br></pre></td></tr></table></figure>
+<p>安装这个组件才能使其编译JSX，同理，如果你需要编译ES6语法，请安装<code>babel-loader</code>。我没有使用ES6，一方面是我不会，另一方面是我使用了<code>sublime</code>上的<code>React</code>插件，它只会自动生成js的代码。插件地址：<a href="https://github.com/facebookarchive/sublime-react" target="_blank" rel="external">https://github.com/facebookarchive/sublime-react</a></p>
+</li>
+<li>编写配置文件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">"./src/index.js"</span>,                            <span class="comment">//入口文件路径</span></span><br><span class="line">    output: &#123;</span><br><span class="line">    	path : path.join(__dirname,<span class="string">"bulid"</span>),            <span class="comment">//出口文件路径</span></span><br><span class="line">        filename: <span class="string">"main.js"</span>                             <span class="comment">//出口文件名</span></span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>]                 <span class="comment">//引用默认文件名</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        loaders: [</span><br><span class="line">            &#123; test: <span class="regexp">/\.js$/</span>,    loader: <span class="string">"jsx-loader"</span> &#125;  <span class="comment">//使用jsx-loader组件</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="总结">总结</h2><p>总之React组件的划分很重要，我的方法也只是愚见。如果大家又更好的方法，欢迎讨论。</p>
+<h2 id="编写gulp配置文件gulpfile-js">编写gulp配置文件<code>gulpfile.js</code></h2><ol>
+<li><p>引入组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>),               <span class="comment">//html压缩</span></span><br><span class="line">	minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),          <span class="comment">//css压缩</span></span><br><span class="line">	uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),                 <span class="comment">//js压缩</span></span><br><span class="line">	concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),                 <span class="comment">//文件合并</span></span><br><span class="line">	rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),                 <span class="comment">//文件更名</span></span><br><span class="line">	less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>),                     <span class="comment">//Less编译</span></span><br><span class="line">	webpack = <span class="built_in">require</span>(<span class="string">'gulp-webpack'</span>),               <span class="comment">//webpack</span></span><br><span class="line">	webpackConfig = <span class="built_in">require</span>(<span class="string">'./webpack.config.js'</span>);  <span class="comment">//引入webpack配置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>html压缩</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   gulp.task(<span class="string">'html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./*.html'</span>)</span><br><span class="line">    .pipe(htmlmin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./dest'</span>))</span><br><span class="line">    .pipe(notify(&#123; message: <span class="string">'html task ok'</span> &#125;));</span><br><span class="line"> </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Less编译并合并压缩</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   gulp.task(<span class="string">'less'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'less/*.less'</span>)</span><br><span class="line">        .pipe(less())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'css'</span>));</span><br><span class="line">        .pipe(concat(<span class="string">'index.min.css'</span>))</span><br><span class="line">        .pipe(minifycss())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'css'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSX编译并压缩</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   gulp.task(<span class="string">"webpack"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./'</span>)</span><br><span class="line">    .pipe(webpack(webpackConfig))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./bulid'</span>))</span><br><span class="line">    .pipe(rename(<span class="string">'main.min.js'</span>))</span><br><span class="line">    .pipe(uglify())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./bulid'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   gulp.task(<span class="string">'Watch'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   	gulp.watch(<span class="string">'./*.html'</span>, [<span class="string">'html'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'less/*.less'</span>, [<span class="string">'less'</span>]);</span><br><span class="line">    gulp.watch(<span class="string">'src/*.js'</span>, [<span class="string">'webpack'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="开始工作">开始工作</h2><p>只需要在控制台中输入：<code>gulp Watch</code>就可以啦。在你的编写文件按<code>Ctrl+S</code>，也就是保存的时候，它就会自动编译啦。</p>
 </span>
       
     </div>
@@ -330,9 +319,17 @@
           
             <a href="/tags/Reactjs/" rel="tag">#Reactjs</a>
           
+            <a href="/tags/gulp/" rel="tag">#gulp</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/webpack/" rel="tag">#webpack</a>
+          
             <a href="/tags/前端/" rel="tag">#前端</a>
           
             <a href="/tags/前端优化/" rel="tag">#前端优化</a>
+          
+            <a href="/tags/工具/" rel="tag">#工具</a>
           
         </div>
       
@@ -341,17 +338,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/08/快速排序/" rel="next" title="快速排序">
-                <i class="fa fa-chevron-left"></i> 快速排序
+              <a href="/2016/03/10/reactjs组件划分/" rel="next" title="reactjs组件划分">
+                <i class="fa fa-chevron-left"></i> reactjs组件划分
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/14/强有力的工具-gulp/" rel="prev" title="强有力的工具--gulp">
-                强有力的工具--gulp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -378,8 +371,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/10/reactjs组件划分/"
-           data-title="reactjs组件划分" data-url="http://yoursite.com/2016/03/10/reactjs组件划分/">
+      <div class="ds-thread" data-thread-key="2016/03/14/强有力的工具-gulp/"
+           data-title="强有力的工具--gulp" data-url="http://yoursite.com/2016/03/14/强有力的工具-gulp/">
       </div>
     
   </div>
@@ -498,7 +491,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactjs组件的划分"><span class="nav-number">1.</span> <span class="nav-text">Reactjs组件的划分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅谈React组件化编程"><span class="nav-number">1.1.</span> <span class="nav-text">浅谈React组件化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React官网例子"><span class="nav-number">1.1.1.</span> <span class="nav-text">React官网例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随便谈谈"><span class="nav-number">1.1.2.</span> <span class="nav-text">随便谈谈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演示"><span class="nav-number">1.1.3.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#强有力的构建工具–Gulp"><span class="nav-number">1.</span> <span class="nav-text">强有力的构建工具–Gulp</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先说gulp-webpack"><span class="nav-number">1.2.</span> <span class="nav-text">先说gulp-webpack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写gulp配置文件gulpfile-js"><span class="nav-number">1.3.</span> <span class="nav-text">编写gulp配置文件gulpfile.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始工作"><span class="nav-number">1.4.</span> <span class="nav-text">开始工作</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
