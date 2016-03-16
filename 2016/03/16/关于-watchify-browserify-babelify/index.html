@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DOM,HTML+CSS+JS,Reactjs,前端,前端优化," />
+  <meta name="keywords" content="DOM,HTML+CSS+JS,Reactjs,browserify,nodejs,watchify,前端,前端优化,工具," />
 
 
 
@@ -51,26 +51,16 @@
 
 
 
-<meta name="description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
+<meta name="description" content="关于 watchify + browserify + babelify今天开始看Redux,关于Redux现在先不谈，今天要谈的是我在阅读他的文档时（中文文档http://camsong.github.io/redux-in-chinese/index.html），看到了一个关于Browserify的简单示例，因为它比较火，而且我也没有用过，所以就简单看了一下。地址（https://github.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="reactjs组件划分">
-<meta property="og:url" content="http://yoursite.com/2016/03/10/reactjs组件划分/index.html">
+<meta property="og:title" content="关于 watchify + browserify + babelify">
+<meta property="og:url" content="http://yoursite.com/2016/03/16/关于-watchify-browserify-babelify/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs1.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs2.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-2.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-3.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-4.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-5.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-6.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-7.png">
-<meta property="og:image" content="http://yoursite.com/images/2016-3-10-reactjs3-8.png">
-<meta property="og:updated_time" content="2016-03-10T09:05:04.669Z">
+<meta property="og:description" content="关于 watchify + browserify + babelify今天开始看Redux,关于Redux现在先不谈，今天要谈的是我在阅读他的文档时（中文文档http://camsong.github.io/redux-in-chinese/index.html），看到了一个关于Browserify的简单示例，因为它比较火，而且我也没有用过，所以就简单看了一下。地址（https://github.">
+<meta property="og:updated_time" content="2016-03-16T12:29:51.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="reactjs组件划分">
-<meta name="twitter:description" content="Reactjs组件的划分学习React也已经有一段时间，总感觉是野路子多点，毕竟React用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，React简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起React就一句话，">
+<meta name="twitter:title" content="关于 watchify + browserify + babelify">
+<meta name="twitter:description" content="关于 watchify + browserify + babelify今天开始看Redux,关于Redux现在先不谈，今天要谈的是我在阅读他的文档时（中文文档http://camsong.github.io/redux-in-chinese/index.html），看到了一个关于Browserify的简单示例，因为它比较火，而且我也没有用过，所以就简单看了一下。地址（https://github.">
 
 
 
@@ -82,7 +72,7 @@
   };
 </script>
 
-  <title> reactjs组件划分 | Mo_North </title>
+  <title> 关于 watchify + browserify + babelify | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +212,7 @@
             
             
               
-                reactjs组件划分
+                关于 watchify + browserify + babelify
               
             
           </h1>
@@ -231,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-03-10T15:48:08+08:00" content="2016-03-10">
-              2016-03-10
+            <time itemprop="dateCreated" datetime="2016-03-16T20:13:50+08:00" content="2016-03-16">
+              2016-03-16
             </time>
           </span>
 
@@ -241,8 +231,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Reactjs/" itemprop="url" rel="index">
-                    <span itemprop="name">Reactjs</span>
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -257,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/10/reactjs组件划分/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/reactjs组件划分/" itemprop="commentsCount"></span>
+                <a href="/2016/03/16/关于-watchify-browserify-babelify/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/关于-watchify-browserify-babelify/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -277,45 +267,12 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Reactjs组件的划分">Reactjs组件的划分</h1><p>学习<code>React</code>也已经有一段时间，总感觉是野路子多点，毕竟<code>React</code>用起来还是塑造性相当强的，像我这种没有阅读过专业书籍，也没有看过“别人家”代码的小白，只是个名副其实的野路子吧。不过用起来确实很溜，比起之前用的SUI等框架而言，<code>React</code>简直就是神器，它的虚拟DOM使得页面变得十分顺畅。这块就不应该将她称之为框架了，更准确的说是前端的构建工具了。总之用起<code>React</code>就一句话，妈妈再也不用担心我的单页面大数据了！</p>
+        <span itemprop="articleBody"><h1 id="关于_watchify_+_browserify_+_babelify">关于 watchify + browserify + babelify</h1><p>今天开始看Redux,关于Redux现在先不谈，今天要谈的是我在阅读他的文档时（中文文档<a href="http://camsong.github.io/redux-in-chinese/index.html），看到了一个关于Browserify的简单示例，因为它比较火，而且我也没有用过，所以就简单看了一下。地址（https://github.com/jackielii/simplest-redux-example）" target="_blank" rel="external">http://camsong.github.io/redux-in-chinese/index.html），看到了一个关于Browserify的简单示例，因为它比较火，而且我也没有用过，所以就简单看了一下。地址（https://github.com/jackielii/simplest-redux-example）</a></p>
 <a id="more"></a>
-<h2 id="浅谈React组件化编程">浅谈React组件化编程</h2><p>首先引用 <a href="http://reactjs.cn/react/docs/why-react.html" target="_blank" rel="external">官网</a> 上的一句话：</p>
-<blockquote>
-<p>React都是关于构建可复用的组件。事实上，通过React你唯一要做的事情就是构建组件。得益于其良好的封装性，组件使代码复用、测试和关注分离（separation of concerns）更加简单。</p>
-</blockquote>
-<p>在我的实际使用中更加深入的理解了这句话的含义。React就是组件化的编程，越来越像客户端了。组件可以复用，可以嵌套，在实际生产中这样做也大大节省可代码量，也是你的代码看上去更加整洁。可是，上述的一切都是在你的组件划分还算ok的基础上说的。如果组件划分的一塌糊涂，就别提怎么复用嵌套了。腾讯的面试官曾经问我React时问道：你的React项目组件是怎么划分的。所以说，React的组件划分真的很重要。</p>
-<h3 id="React官网例子">React官网例子</h3><p><a href="http://reactjs.cn/react/docs/thinking-in-react.html" target="_blank" rel="external">React官网连接</a></p>
-<p>UI设计 ： <img src="/images/2016-3-10-reactjs1.png" alt="UI"></p>
-<blockquote>
-<p>你要做的第一件事是，为所有组件（及子组件）命名并画上线框图。假如你和设计师一起工作，也许他们已经完成了这项工作，所以赶紧去跟他们沟通！他们的 Photoshop 图层名也许最终可以直接用于你的 React 组件名。</p>
-<p>然而你如何知道哪些才能成为组件？想象一下，当你创建一些函数或对象时，用到一些类似的技术。其中一项技术就是单一功能原则，指的是，理想状态下一个组件应该只做一件事，假如它功能逐渐变大就需要被拆分成更小的子组件。</p>
-<p>由于你经常需要将一个JSON数据模型展示给用户，因此你需要检查这个模型结构是否正确以便你的 UI （在这里指组件结构）是否能够正确的映射到这个模型上。这是因为用户界面和数据模型在 信息构造 方面都要一致，这意味着将你可以省下很多将 UI 分割成组件的麻烦事。你需要做的仅仅只是将数据模型分隔成一小块一小块的组件，以便它们都能够表示成组件。</p>
-</blockquote>
-<p>组件划分 ： <img src="/images/2016-3-10-reactjs2.png" alt="组件"></p>
-<h3 id="随便谈谈">随便谈谈</h3><p>其实人家已经讲的很清楚了，组件的划分只要把握住了<strong>单一功能原则</strong>,基本上也就没有什么问题了。下面我就简单谈一下我的看法吧。<strong>这只是我的看法，不具备权威性</strong></p>
-<ol>
-<li>从最重要并最小的单元开始划分</li>
-<li>找出与之相关并行使相同职能并且可以一起重复使用的元素。</li>
-<li>将其看为组一，找寻其父级元素。</li>
-<li>查找其父级元素是否包含除组一外的其它元素。</li>
-<li>如果不存在，就继续找寻其父级，直至有其他元素包含在其父级或已为最顶级元素。</li>
-<li>如果包含其他元素，就以其他元素为组二。并在其他元素中找寻最重要并最小的单元从，重复以上步骤。</li>
-</ol>
-<p>简单来说就是这样了。下面就演示一下吧。</p>
-<h3 id="演示">演示</h3><p>UI : <img src="/images/2016-3-10-reactjs3.png" alt="UI"></p>
-<p>图片不是很清晰，还请见谅。</p>
-<p>分析 ：</p>
-<ol>
-<li>找出最重要最小的元素，无可置疑，肯定是内容了。<br><img src="/images/2016-3-10-reactjs3-2.png" alt="img"></li>
-<li>找出其与之相关并行使相同职能的元素。就是后面的图片<br><img src="/images/2016-3-10-reactjs3-3.png" alt="img"></li>
-<li>寻找其父级元素<br><img src="/images/2016-3-10-reactjs3-4.png" alt="img"></li>
-<li>它并没有其它的子元素了，那就继续寻找它的父级。<br><img src="/images/2016-3-10-reactjs3-5.png" alt="img"></li>
-<li>它的顶部一个图片轮询，先将其也化为一个组<br><img src="/images/2016-3-10-reactjs3-6.png" alt="img"></li>
-<li>现在将其看作整体，查看它内部最重要最小的元素，就是它本身，那么就不用继续了。接着找绿色组的父级<br><img src="/images/2016-3-10-reactjs3-7.png" alt="img"></li>
-<li>它的顶部和底部有标题栏和导航栏。将其分别化成组。<br><img src="/images/2016-3-10-reactjs3-8.png" alt="img"></li>
-<li>接下来就是以这两个组为整体，分别继续划分。我这里就不多化了。</li>
-</ol>
-<h2 id="总结">总结</h2><p>总之React组件的划分很重要，我的方法也只是愚见。如果大家又更好的方法，欢迎讨论。</p>
+<h2 id="package-json">package.json</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"simplest-redux-example"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.0"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"simplest redux + react example"</span></span>,</span><br><span class="line">  "<span class="attribute">main</span>": <span class="value"><span class="string">"index.js"</span></span>,</span><br><span class="line">  "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">start</span>": <span class="value"><span class="string">"watchify --extension=js -o bundle.js index.js &amp; python -m SimpleHTTPServer 8000"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">repository</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">type</span>": <span class="value"><span class="string">"git"</span></span>,</span><br><span class="line">    "<span class="attribute">url</span>": <span class="value"><span class="string">"git+https://github.com/jackielii/simplest-redux-example.git"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">keywords</span>": <span class="value">[</span><br><span class="line">    <span class="string">"redux"</span>,</span><br><span class="line">    <span class="string">"react"</span></span><br><span class="line">  ]</span>,</span><br><span class="line">  "<span class="attribute">author</span>": <span class="value"><span class="string">"Jackie Li"</span></span>,</span><br><span class="line">  "<span class="attribute">license</span>": <span class="value"><span class="string">"ISC"</span></span>,</span><br><span class="line">  "<span class="attribute">bugs</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">url</span>": <span class="value"><span class="string">"https://github.com/jackielii/simplest-redux-example/issues"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">browserify</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">transform</span>": <span class="value">[</span><br><span class="line">      <span class="string">"babelify"</span></span><br><span class="line">    ]</span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">homepage</span>": <span class="value"><span class="string">"https://github.com/jackielii/simplest-redux-example#readme"</span></span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">react</span>": <span class="value"><span class="string">"^0.14.0"</span></span>,</span><br><span class="line">    "<span class="attribute">react-dom</span>": <span class="value"><span class="string">"^0.14.0"</span></span>,</span><br><span class="line">    "<span class="attribute">react-redux</span>": <span class="value"><span class="string">"^3.1.0"</span></span>,</span><br><span class="line">    "<span class="attribute">redux</span>": <span class="value"><span class="string">"^3.0.0"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">devDependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">browserify</span>": <span class="value"><span class="string">"~10.2.4"</span></span>,</span><br><span class="line">    "<span class="attribute">babelify</span>": <span class="value"><span class="string">"~6.1.2"</span></span>,</span><br><span class="line">    "<span class="attribute">watchify</span>": <span class="value"><span class="string">"^3.3.1"</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>主要问题在哪呢，在于我根据它的package文件，使用<code>npm install</code>安装好配置项后，使用是一点问题没有的。功能大体有合并Commandjs文件，解析ES6，解析JSX。但是之后就出了个问题，我在自己使用中，手动添加了依赖项<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">react</span>": <span class="value"><span class="string">"^0.14.7"</span></span>,</span><br><span class="line">    "<span class="attribute">react-dom</span>": <span class="value"><span class="string">"^0.14.7"</span></span>,</span><br><span class="line">    "<span class="attribute">react-redux</span>": <span class="value"><span class="string">"^4.4.1"</span></span>,</span><br><span class="line">    "<span class="attribute">redux</span>": <span class="value"><span class="string">"^3.3.1"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">devDependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">babelify</span>": <span class="value"><span class="string">"^7.2.0"</span></span>,</span><br><span class="line">    "<span class="attribute">browserify</span>": <span class="value"><span class="string">"^13.0.0"</span></span>,</span><br><span class="line">    "<span class="attribute">watchify</span>": <span class="value"><span class="string">"^3.7.0"</span></span><br><span class="line">  </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然而这样使用大多数功能是没有问题的，可是在解析JSX的时候，它就罢工了。试了半天不知道为什么。最后才注意到，原来我手动添加依赖项的时候，安装的都是最新的版本。我在将<code>babelify</code>的版本降低之后，一切又都ok了。所以在安装高版本的时候，<code>&quot;browserify&quot;: {&quot;transform&quot;: [&quot;babelify&quot;]}</code>，这样配置<code>browserify</code>是没有什么卵用的。</p>
+<h2 id="小结">小结</h2><p>好吧，我承认我没有找到好的方式解决，（只能去用低版本）,原因就是我压根不会使用<code>browserify</code>,还望求助。</p>
 </span>
       
     </div>
@@ -330,9 +287,17 @@
           
             <a href="/tags/Reactjs/" rel="tag">#Reactjs</a>
           
+            <a href="/tags/browserify/" rel="tag">#browserify</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/watchify/" rel="tag">#watchify</a>
+          
             <a href="/tags/前端/" rel="tag">#前端</a>
           
             <a href="/tags/前端优化/" rel="tag">#前端优化</a>
+          
+            <a href="/tags/工具/" rel="tag">#工具</a>
           
         </div>
       
@@ -341,17 +306,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/08/快速排序/" rel="next" title="快速排序">
-                <i class="fa fa-chevron-left"></i> 快速排序
+              <a href="/2016/03/14/强有力的工具-gulp/" rel="next" title="强有力的工具--gulp">
+                <i class="fa fa-chevron-left"></i> 强有力的工具--gulp
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/14/强有力的工具-gulp/" rel="prev" title="强有力的工具--gulp">
-                强有力的工具--gulp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -378,8 +339,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/10/reactjs组件划分/"
-           data-title="reactjs组件划分" data-url="http://yoursite.com/2016/03/10/reactjs组件划分/">
+      <div class="ds-thread" data-thread-key="2016/03/16/关于-watchify-browserify-babelify/"
+           data-title="关于 watchify + browserify + babelify" data-url="http://yoursite.com/2016/03/16/关于-watchify-browserify-babelify/">
       </div>
     
   </div>
@@ -498,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reactjs组件的划分"><span class="nav-number">1.</span> <span class="nav-text">Reactjs组件的划分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅谈React组件化编程"><span class="nav-number">1.1.</span> <span class="nav-text">浅谈React组件化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React官网例子"><span class="nav-number">1.1.1.</span> <span class="nav-text">React官网例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随便谈谈"><span class="nav-number">1.1.2.</span> <span class="nav-text">随便谈谈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演示"><span class="nav-number">1.1.3.</span> <span class="nav-text">演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于_watchify_+_browserify_+_babelify"><span class="nav-number">1.</span> <span class="nav-text">关于 watchify + browserify + babelify</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#package-json"><span class="nav-number">1.1.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.2.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
