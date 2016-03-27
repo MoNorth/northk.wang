@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c语言,二分查找,查找," />
+  <meta name="keywords" content="DOM,HTML+CSS+JS,前端,前端优化,转载," />
 
 
 
@@ -51,16 +51,18 @@
 
 
 
-<meta name="description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
+<meta name="description" content="本文转载至蘑菇哥">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二分查找">
-<meta property="og:url" content="http://yoursite.com/2016/02/19/二分查找/index.html">
+<meta property="og:title" content="【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥">
+<meta property="og:url" content="http://yoursite.com/2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
-<meta property="og:updated_time" content="2016-02-19T13:47:40.372Z">
+<meta property="og:description" content="本文转载至蘑菇哥">
+<meta property="og:image" content="http://s8.mogucdn.com/pic/141118/o61vu_ieygcolfmu3doojzmqytambqmeyde_379x596.png">
+<meta property="og:image" content="http://s6.mogucdn.com/pic/141118/o61vu_ieygezdbmyytmojzmqytambqmmyde_220x253.png">
+<meta property="og:updated_time" content="2016-03-27T08:54:28.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二分查找">
-<meta name="twitter:description" content="二分查找（折半查找）感觉将二分查找称呼为折半查找的话，思想一下子就出来了。">
+<meta name="twitter:title" content="【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥">
+<meta name="twitter:description" content="本文转载至蘑菇哥">
 
 
 
@@ -72,7 +74,7 @@
   };
 </script>
 
-  <title> 二分查找 | Mo_North </title>
+  <title> 【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥 | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +214,7 @@
             
             
               
-                二分查找
+                【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥
               
             
           </h1>
@@ -221,8 +223,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-02-19T21:33:01+08:00" content="2016-02-19">
-              2016-02-19
+            <time itemprop="dateCreated" datetime="2016-03-27T16:52:47+08:00" content="2016-03-27">
+              2016-03-27
             </time>
           </span>
 
@@ -231,8 +233,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/查找/" itemprop="url" rel="index">
-                    <span itemprop="name">查找</span>
+                  <a href="/categories/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
                   </a>
                 </span>
 
@@ -247,8 +249,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/19/二分查找/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/19/二分查找/" itemprop="commentsCount"></span>
+                <a href="/2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,20 +269,119 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="二分查找（折半查找）">二分查找（折半查找）</h1><p>感觉将二分查找称呼为折半查找的话，思想一下子就出来了。</p>
+        <span itemprop="articleBody"><p>本文转载至蘑菇哥</p>
 <a id="more"></a>
-<p>二分查找可以说是应用相当广泛的一种查找了，它是基于有序序列的一种高效查找，时间复杂度为O(logN)，而且基本思想很是广泛。但由于应用众多，所以在二分查找的基础上，衍生了很多相关的变形，在此这些就不一一介绍了，我只想说，别把二分想的那么简单。</p>
-<h1 id="思想">思想</h1><h2 id="简单一说">简单一说</h2><p>根据字面意思而言，二分查找，折半查找。无非就是将数列一半一半的去找，其实就是这样。先取出数列（升序）最中间的数字与待查数进行比较，如果待查数字较大，则将以刚才的中间数为起点，选取整个数列的后一半作为整个数列，再重复上述步骤，直到找到数字或者一直将树列划分到没有。</p>
-<h2 id="举例">举例</h2><p>数列 <code>1 2 3 4 5 6</code></p>
-<p>待查数 <code>5</code></p>
-<ol>
-<li>选取中间数 <code>4</code>与待查数作比较（由于是六个数，选取中间索引为3，所以中间数为4）;</li>
-<li><code>4 &lt; 5</code> 所以选取数列后半段作为整个数列。新数列 <code>4 5 6</code>;</li>
-<li>选取中间数 <code>5</code>与待查数进行比较;</li>
-<li>查找成功。 </li>
-</ol>
-<h1 id="代码">代码</h1><p>基本思想比较简单，就不多说了，直接上代码。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiSearch</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n,<span class="keyword">int</span> key)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,min = <span class="number">0</span>,max = n,mid;</span><br><span class="line">	<span class="keyword">while</span>(max &gt; min)</span><br><span class="line">	&#123;</span><br><span class="line">		mid = (max + min) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(arr[mid] == key)</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(arr[mid] &gt; key)</span><br><span class="line">			max = mid;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(min == mid)</span><br><span class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			min = mid; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="自适应屏幕宽度最佳解决方案">自适应屏幕宽度最佳解决方案</h2><h3 id="本文把双11实践过的自适应屏幕方案总结了一下。特别感谢下@特尼学长，本文中很多技术点都是@特尼学长琢磨出来的。">本文把双11实践过的自适应屏幕方案总结了一下。<br>特别感谢下@特尼学长，本文中很多技术点都是@特尼学长琢磨出来的。</h3><h3 id="A_–_用width，margin百分比和border-box属性布局商品列表"><b style="color:blue">A – 用width，margin百分比和border-box属性布局商品列表</b></h3><p>1) PSD量好商品宽度，计算好宽度百分比，magin百分比来布局图强。</p>
+<p>2) 如果商品容器有边框则要设置border-box属性，避免边框宽度影响图强布局照成误差。</p>
+<p><strong>CSS代码</strong></p>
+<pre><code><span class="comment">/*重置盒子模式*/</span>
+<span class="class">.border-box</span> <span class="rules">{
+  <span class="rule"><span class="attribute">-webkit-box-sizing</span>:<span class="value"> border-box</span></span>;
+  <span class="rule"><span class="attribute">-moz-box-sizing</span>:<span class="value"> border-box</span></span>;
+  <span class="rule"><span class="attribute">box-sizing</span>:<span class="value"> border-box</span></span>;
+}</span>
+
+<span class="comment">/*商品容器*/</span>
+<span class="class">.goods_box_list</span> <span class="class">.goods_box</span> <span class="rules">{
+    <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;
+    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">2%</span> <span class="number">2%</span></span></span>;
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">47%</span></span></span>;
+    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#000</span></span></span>;
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#fff</span></span></span>;
+    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+}</span>
+</code></pre><p><strong>PHP代码</strong></p>
+<pre><code>&lt;?php
+// 测试图强 <span class="number">20</span>个商品
+<span class="keyword">for</span>( <span class="variable">$i</span>=<span class="number">0</span> ; <span class="variable">$i</span> &lt; <span class="number">20</span> ; <span class="variable">$i</span>++ ) {
+?&gt;
+&lt;div class=<span class="string">"goods_box border-box fl"</span>&gt;
+    。。。。。。。。
+&lt;/div&gt;
+&lt;?php } ?&gt;
+</code></pre><h3 id="B_–_用padding-bottom百分比来做图片容器等比宽高变化"><b style="color:blue">B – 用padding-bottom百分比来做图片容器等比宽高变化</b></h3><p>1) height直接设置为0，用padding-bottom百分比等于容器高度除以父级宽度。</p>
+<p>2) 因为高度是百分比算的，由于小数四舍五入的缘故，容器高度可能会比图片实际高度小1px。<br>所以要加overflow:hidden防止容器被撑开，破坏布局。</p>
+<p><strong>CSS代码</strong></p>
+<pre><code><span class="comment">/*填充图片样式*/</span>
+<span class="class">.fill_img</span> <span class="rules">{ 
+  <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;
+}</span>
+
+<span class="comment">/*图片容器样式*/</span>
+<span class="class">.goods_box_list</span> <span class="class">.goods_img_box</span> <span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;
+    <span class="rule"><span class="attribute">padding-bottom</span>:<span class="value"> <span class="number">150%</span></span></span>;
+    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+}</span>
+</code></pre><p><strong>PHP代码</strong></p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"goods_box border-box fl"</span>&gt;</span>
+    <span class="php"><span class="preprocessor">&lt;?php</span> <span class="comment">// 图片容器 ?&gt;</span></span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"goods_img_box"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"fill_img"</span> <span class="attribute">src</span>=<span class="value">"http://dummyimage.com/400x600/a3c0b9/fff"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    。。。。。。。。。
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><h3 id="C_–_用rem来做字体大小、文本行高自适应"><b style="color:blue">C – 用rem来做字体大小、文本行高自适应</b></h3><p>1) 先安照市面上的屏幕宽度用media来给html设置对应的<strong>基准字体</strong>。</p>
+<p>2) body应该把font-size属性重置会12px，防止页面里默认字体大小乱掉。</p>
+<p>3) <strong>基准字体</strong>不能小于12px，因为部分浏览器不支持12px一下字体，举例10px的基准字体会被默认当12px来计算，<br>所以最小基准值取100px,而不是10px或1px。</p>
+<p>参考资料 <a href="http://www.w3cplus.com/css3/define-font-size-with-css3-rem" title="Title" target="_blank" rel="external">http://www.w3cplus.com/css3/define-font-size-with-css3-rem</a> </p>
+<pre><code><span class="comment">/*320默认rem字体标准值*/</span>
+<span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">100px</span></span></span>;}</span> 
+<span class="comment">/*body上把默认字体大小重置回来*/</span>
+<span class="tag">body</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">12px</span></span></span>;}</span>
+
+<span class="comment">/*media rem字体适配*/</span>
+<span class="comment">/*针对360px以上的屏幕做适配*/</span>
+<span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">360px</span>) </span>{
+  <span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">112px</span> <span class="important">!important</span></span></span>;}</span>
+}
+<span class="comment">/*针对400px以上的屏幕做适配*/</span>
+<span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">400px</span>) </span>{
+  <span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">125px</span> <span class="important">!important</span></span></span>;}</span>
+}
+<span class="comment">/*适配480px以上屏幕*/</span>
+<span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">480px</span>) </span>{
+  <span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">150px</span> <span class="important">!important</span></span></span>;}</span>
+}
+<span class="comment">/*适配540px以上屏幕*/</span>
+<span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">540px</span>) </span>{
+  <span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">168px</span> <span class="important">!important</span></span></span>;}</span>
+}
+<span class="comment">/*适配640px以上屏幕*/</span>
+<span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">640px</span>) </span>{
+  <span class="tag">html</span><span class="rules">{<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">200px</span> <span class="important">!important</span></span></span>;}</span>
+}
+</code></pre><p>4）在需要的文本元素样例使用rem单位。取值为相对应当前屏幕宽度的根元素(即html元素)font-size计算值的倍数。</p>
+<p><strong>举个列子，样例里的商品名称要求在[320px,360px)宽度里，字体大小为12px，行高和高度都为18px。</strong></p>
+<p><strong>CSS代码</strong></p>
+<pre><code><span class="class">.goods_box_list</span> <span class="class">.tgoods_name</span> <span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">0.12rem</span></span></span>;
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">0.18rem</span></span></span>;
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0.18rem</span></span></span>;
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> block</span></span>;
+    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> bold</span></span>;
+    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#222</span></span></span>;
+}</span>
+</code></pre><p><strong>PHP代码</strong></p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"goods_box border-box fl"</span>&gt;</span>
+    <span class="php"><span class="preprocessor">&lt;?php</span> <span class="comment">// 图片容器 ?&gt;</span></span>
+    。。。。。。。
+    <span class="php"><span class="preprocessor">&lt;?php</span> <span class="comment">// 商品信息容器 ?&gt;</span></span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tgoods_info"</span>&gt;</span>
+        <span class="php"><span class="preprocessor">&lt;?php</span> <span class="comment">// 商品名称 ?&gt;</span></span>
+        <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"tgoods_name"</span>&gt;</span>SIXGOD劲凉花露水，蓝胖专用香水！！！<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+        <span class="php"><span class="preprocessor">&lt;?php</span> <span class="comment">// 商品价格和折扣 ?&gt;</span></span>
+        。。。。。。。
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><h3 id="D_–_测试结果截图："><b style="color:blue">D – 测试结果截图：</b></h3><p><img src="http://s8.mogucdn.com/pic/141118/o61vu_ieygcolfmu3doojzmqytambqmeyde_379x596.png" alt="alt text" title="Title"></p>
+<p>测试页面文件： <strong>appbeta/views/webdemo/lanpang/demo-screen-width.php</strong></p>
+<p>测试地址： <a href="http://www.mogujie.lanpang/mapitest/screenwidth" title="Title" target="_blank" rel="external">http://www.mogujie.lanpang/mapitest/screenwidth</a> </p>
+<p>测试二维码</p>
+<p><img src="http://s6.mogucdn.com/pic/141118/o61vu_ieygezdbmyytmojzmqytambqmmyde_220x253.png" alt="alt text" title="Title"></p>
 </span>
       
     </div>
@@ -289,11 +390,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c语言/" rel="tag">#c语言</a>
+            <a href="/tags/DOM/" rel="tag">#DOM</a>
           
-            <a href="/tags/二分查找/" rel="tag">#二分查找</a>
+            <a href="/tags/HTML-CSS-JS/" rel="tag">#HTML+CSS+JS</a>
           
-            <a href="/tags/查找/" rel="tag">#查找</a>
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/前端优化/" rel="tag">#前端优化</a>
+          
+            <a href="/tags/转载/" rel="tag">#转载</a>
           
         </div>
       
@@ -302,17 +407,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/18/桶排序/" rel="next" title="桶排序">
-                <i class="fa fa-chevron-left"></i> 桶排序
+              <a href="/2016/03/16/关于-watchify-browserify-babelify/" rel="next" title="关于 watchify + browserify + babelify">
+                <i class="fa fa-chevron-left"></i> 关于 watchify + browserify + babelify
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/05/学习Reactjs笔记/" rel="prev" title="学习Reactjs笔记">
-                学习Reactjs笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -339,8 +440,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/19/二分查找/"
-           data-title="二分查找" data-url="http://yoursite.com/2016/02/19/二分查找/">
+      <div class="ds-thread" data-thread-key="2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/"
+           data-title="【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥" data-url="http://yoursite.com/2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/">
       </div>
     
   </div>
@@ -459,7 +560,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二分查找（折半查找）"><span class="nav-number">1.</span> <span class="nav-text">二分查找（折半查找）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思想"><span class="nav-number">2.</span> <span class="nav-text">思想</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单一说"><span class="nav-number">2.1.</span> <span class="nav-text">简单一说</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">2.2.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自适应屏幕宽度最佳解决方案"><span class="nav-number">1.</span> <span class="nav-text">自适应屏幕宽度最佳解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本文把双11实践过的自适应屏幕方案总结了一下。特别感谢下@特尼学长，本文中很多技术点都是@特尼学长琢磨出来的。"><span class="nav-number">1.1.</span> <span class="nav-text">本文把双11实践过的自适应屏幕方案总结了一下。特别感谢下@特尼学长，本文中很多技术点都是@特尼学长琢磨出来的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A_–_用width，margin百分比和border-box属性布局商品列表"><span class="nav-number">1.2.</span> <span class="nav-text">A – 用width，margin百分比和border-box属性布局商品列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B_–_用padding-bottom百分比来做图片容器等比宽高变化"><span class="nav-number">1.3.</span> <span class="nav-text">B – 用padding-bottom百分比来做图片容器等比宽高变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C_–_用rem来做字体大小、文本行高自适应"><span class="nav-number">1.4.</span> <span class="nav-text">C – 用rem来做字体大小、文本行高自适应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D_–_测试结果截图："><span class="nav-number">1.5.</span> <span class="nav-text">D – 测试结果截图：</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
