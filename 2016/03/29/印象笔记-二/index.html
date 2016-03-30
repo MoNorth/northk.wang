@@ -1,0 +1,742 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.useso.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="前端笔记(二)内容：post/get、跨域、内存泄漏、caller、callee等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="印象笔记(二)">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/印象笔记-二/index.html">
+<meta property="og:site_name" content="Mo_North">
+<meta property="og:description" content="前端笔记(二)内容：post/get、跨域、内存泄漏、caller、callee等">
+<meta property="og:updated_time" content="2016-03-30T06:14:34.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="印象笔记(二)">
+<meta name="twitter:description" content="前端笔记(二)内容：post/get、跨域、内存泄漏、caller、callee等">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 印象笔记(二) | Mo_North </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mo_North</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                印象笔记(二)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-29T15:38:06+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/29/印象笔记-二/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/印象笔记-二/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="前端笔记(二)">前端笔记(二)</h1><p>内容：post/get、跨域、内存泄漏、caller、callee等</p>
+<a id="more"></a>
+<h2 id="post/get">post/get</h2><h3 id="作用">作用</h3><p>post：用于更新服务器数据<br>get： 用于获取服务器数据</p>
+<h3 id="区别">区别</h3><ol>
+<li>get请求的数据发附加在URL后面，post在http包包体中。</li>
+<li>get请求提交的数据最大为1024字节(不一定)，post理论上没有最大限制，但会根据不同服务器加以限制。</li>
+<li>post相对get安全性更高。</li>
+<li>post请求无法使用缓存。</li>
+</ol>
+<h2 id="跨域">跨域</h2><h3 id="原因">原因</h3><p>跨域问题是由于javascript语言安全限制中的同源策略造成的.<br>简单来说,同源策略是指一段脚本只能读取来自同一来源的窗口和文档的属性,这里的同一来源指的是主机名、协议和端口号的组合.</p>
+<h3 id="解决方案">解决方案</h3><ol>
+<li>jsonp<br>由于script标签的src不存在跨域的限制，所以jsonp就是传如服务器端一个callback函数名，服务器端将json数据当作参数传进callback函数，通过script标签形式获取。前端调用这个函数取得数据。<br>注意，jsonp不属于正式协议。</li>
+<li>document.domain<br>例如：<code>http://www.example.com/a.html</code> 和 <code>http://example.com/b.html</code>这两个页面属于不同域，但只需将其<code>document.domain</code>设置为同一个就可以实现同域访问了。不过<code>document.domain</code>的设置只能为自身或更高一级的父域，且主域必须相同。<br>例如：<code>a.b.example.com</code> 中某个文档的<code>document.domain</code> 可以设成<code>a.b.example.com</code>、<code>b.example.com</code> 、<code>example.com</code>中的任意一个，但是不可以设成 <code>c.a.b.example.com</code>,因为这是当前域的子域，也不可以设成<code>baidu.com</code>,因为主域已经不相同了。</li>
+<li>iframe<br>在主页面中中创建隐藏<code>iframe</code>，将其地址指向所求数据所在域。然后通过<code>window.name</code>或<code>location.hash</code>传值。<br><code>location.hash</code>缺点：数据小，不安全<br><code>window.name</code>缺点：只适用于隐藏<code>iframe</code>的情形。</li>
+</ol>
+<h3 id="手动封装Ajax">手动封装Ajax</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ajax = <span class="function"><span class="keyword">function</span>(<span class="params">urldata</span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(urldata.datatype !== <span class="string">"jsonp"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">var</span> http;</span><br><span class="line">		<span class="keyword">if</span>(XMLHttpRequest)</span><br><span class="line">			http = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ActiveXObject)</span><br><span class="line">			http = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		http.open(urldata.method || <span class="string">"GET"</span>,urldata.url,<span class="literal">true</span>);</span><br><span class="line">		<span class="keyword">if</span>(urldata.success)</span><br><span class="line">			http.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(http.readyState === <span class="number">4</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(http.status/<span class="number">100</span> === <span class="number">2</span>)</span><br><span class="line">						urldata.success(<span class="built_in">JSON</span>.parse(http.responseText));</span><br><span class="line">					<span class="keyword">else</span></span><br><span class="line">						urldata.error &amp;&amp; urldata.error(http.status,http.responseText);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">if</span>(urldata.method === <span class="string">"POST"</span> &amp;&amp; urldata.data)</span><br><span class="line">			http.send(urldata.data);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			http.send();</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">		<span class="keyword">var</span> callback = urldata.callback || <span class="string">"callback"</span>;</span><br><span class="line">		script.src = urldata.url + (urldata.url.indexOf(<span class="string">'?'</span>) === -<span class="number">1</span> ?  <span class="string">"?"</span> : <span class="string">"&amp;"</span>) + <span class="string">"callback="</span> + callback;</span><br><span class="line">		<span class="keyword">var</span> body = <span class="built_in">document</span>.body;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">window</span>[callback] = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">			alert(data.status);</span><br><span class="line">			body.removeChild(script);</span><br><span class="line">			<span class="keyword">delete</span> <span class="built_in">window</span>[callback];</span><br><span class="line">		&#125;;</span><br><span class="line">		body.appendChild(script);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="内存泄漏">内存泄漏</h2><h3 id="两种GC机制">两种GC机制</h3><ol>
+<li>引用计数<br>当一个对象（或其他）被创建后，会将其引用赋给一个变量，当这个对象的引用没有赋给任何变量或对象时，则认为此对象可以被回收。<br>缺点：循环引用无法被回收。</li>
+<li>标记清零<br>这种算法，会定义一个“根”，并且定期地从“根”出发，找出“根”下面的所有对象，看能不能从“根”找到一条路径引用到这个对象。从不同的“根”出发，垃圾回收程序就可以区分所有对象是不是“不可达”的，当对象“不可达”时候，便被回收。<br>优点：循环引用可以被回收。</li>
+</ol>
+<h3 id="内存泄漏的原因">内存泄漏的原因</h3><ol>
+<li>没有被释放的事件。<br>当给一个DOM对象绑定了一个事件，但由于某种原因移除了这个DOM，却没有移除此事件，则内存泄漏。<br>解决：及时释放事件</li>
+<li>内部函数引用<br>也就是闭包，内部变量被内部函数使用，无法进行释放，则内存泄漏。</li>
+<li>貌似泄漏<br>反复重写同一个属性会造成内存大量占用</li>
+<li>页面交叉泄漏<br>这种基于插入顺序而常常引起的泄漏问题，主要是由于对象创建过程中的临时对象未能被及时清理和释放造成的。<br>解决：动态添加元素由内向外执行</li>
+</ol>
+<h2 id="caller和callee">caller和callee</h2><h3 id="caller">caller</h3><p>caller返回一个函数的引用，这个函数调用了当前的函数。意思很简单，就是谁调用了这个函数，caller就返回谁。但如果是顶层调用的，则返回null。<br>例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a.caller);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	a();</span><br><span class="line">&#125;</span><br><span class="line">a();   <span class="comment">//输出null</span></span><br><span class="line">b();   <span class="comment">//输出函数b</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="callee">callee</h3><p>callee返回这个函数本身，是属于arguments的属性。其length属性表示形参个数。<br>例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params">i,j,k</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee.length); <span class="comment">//输出3</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">arguments</span>.callee); <span class="comment">//输出函数a</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="文件异步提交">文件异步提交</h2><h3 id="方法一">方法一</h3><p>动态生成iframe标签，将其隐藏，在iframe中动态构建表单元素，并提交。不推荐</p>
+<h3 id="方法二">方法二</h3><p>构建FormData对象，然后再通过XHR发送。<br>构建FormData有三种方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法一</span></span><br><span class="line"><span class="keyword">var</span> formdata = <span class="keyword">new</span> FormData();</span><br><span class="line">formdata.append(<span class="string">"name"</span>, <span class="string">"呵呵"</span>);</span><br><span class="line">formdata.append(<span class="string">"file"</span>, <span class="built_in">document</span>.forms[<span class="string">"form"</span>][<span class="string">"file"</span>].files[<span class="number">0</span>]);</span><br><span class="line"><span class="comment">//方法二</span></span><br><span class="line"><span class="keyword">var</span> formobj =  <span class="built_in">document</span>.forms[<span class="string">"form"</span>];</span><br><span class="line"><span class="keyword">var</span> formdata = <span class="keyword">new</span> FormData(formobj);</span><br><span class="line"><span class="comment">//方法三</span></span><br><span class="line"><span class="keyword">var</span> formobj =  <span class="built_in">document</span>.forms[<span class="string">"form"</span>];</span><br><span class="line"><span class="keyword">var</span> formdata = formobj.getFormData()</span><br></pre></td></tr></table></figure></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/29/印象笔记-一/" rel="next" title="印象笔记(一)">
+                <i class="fa fa-chevron-left"></i> 印象笔记(一)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/29/印象笔记-二/"
+           data-title="印象笔记(二)" data-url="http://yoursite.com/2016/03/29/印象笔记-二/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mo_North" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mo_North</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/MoNorth" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://resume.northk.wang" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> RESUME
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://xiyoumobile.com" target="_blank">西邮移动应用开发实验室</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lyh__521" target="_blank">本山的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.xxput.com" target="_blank">小鑫的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yes_i_am" target="_blank">巨龙的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端笔记(二)"><span class="nav-number">1.</span> <span class="nav-text">前端笔记(二)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#post/get"><span class="nav-number">1.1.</span> <span class="nav-text">post/get</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.1.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域"><span class="nav-number">1.2.</span> <span class="nav-text">跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原因"><span class="nav-number">1.2.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.2.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动封装Ajax"><span class="nav-number">1.2.3.</span> <span class="nav-text">手动封装Ajax</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄漏"><span class="nav-number">1.3.</span> <span class="nav-text">内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种GC机制"><span class="nav-number">1.3.1.</span> <span class="nav-text">两种GC机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄漏的原因"><span class="nav-number">1.3.2.</span> <span class="nav-text">内存泄漏的原因</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#caller和callee"><span class="nav-number">1.4.</span> <span class="nav-text">caller和callee</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#caller"><span class="nav-number">1.4.1.</span> <span class="nav-text">caller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#callee"><span class="nav-number">1.4.2.</span> <span class="nav-text">callee</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件异步提交"><span class="nav-number">1.5.</span> <span class="nav-text">文件异步提交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一"><span class="nav-number">1.5.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二"><span class="nav-number">1.5.2.</span> <span class="nav-text">方法二</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mo_North</span>
+</div>
+
+<div class="powered-by">
+  <a class="theme-link" href="http://resume.northk.wang">我的主页</a>
+</div>
+
+<div class="theme-info">
+  tel:15664653600
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"north"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.useso.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="前端笔记(一)内容：cookie、@import、BFC、Storage、webWorker、webSocket等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="印象笔记(一)">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/印象笔记-一/index.html">
+<meta property="og:site_name" content="Mo_North">
+<meta property="og:description" content="前端笔记(一)内容：cookie、@import、BFC、Storage、webWorker、webSocket等">
+<meta property="og:updated_time" content="2016-03-29T07:38:44.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="印象笔记(一)">
+<meta name="twitter:description" content="前端笔记(一)内容：cookie、@import、BFC、Storage、webWorker、webSocket等">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 印象笔记(一) | Mo_North </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mo_North</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                印象笔记(一)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-29T13:21:03+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/29/印象笔记-一/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/印象笔记-一/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="前端笔记(一)">前端笔记(一)</h1><p>内容：cookie、@import、BFC、Storage、webWorker、webSocket等</p>
+<a id="more"></a>
+<h2 id="JS_cookie">JS cookie</h2><p>js设置cookie和获取的方法是通过<code>document.cookie</code>去操作的。</p>
+<h3 id="设置：document-cookie=name+value_设置多条cookie不会覆盖。">设置：<code>document.cookie=name+value</code> 设置多条cookie不会覆盖。</h3><h3 id="数量和大小限制：">数量和大小限制：</h3><ol>
+<li>Firefox每个域名cookie限制为50个。</li>
+<li>Opera每个域名cookie限制为30个。</li>
+<li>Safari/WebKit貌似没有cookie限制。但是如果cookie很多，则会使header大小超过服务器的处理的限制，会导致错误发生。</li>
+<li>Firefox和Safari允许cookie多达4097个字节，包括名（name）、值（value）和等号。</li>
+<li>Opera允许cookie多达4096个字节，包括：名（name）、值（value）和等号。 </li>
+<li>Internet Explorer允许cookie多达4095个字节，包括：名（name）、值（value）和等号。</li>
+</ol>
+<h3 id="代码封装">代码封装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Cookie = &#123;</span><br><span class="line">	<span class="comment">//设置cookie</span></span><br><span class="line">	set : <span class="function"><span class="keyword">function</span>(<span class="params">name,value,expires,path,domain,secure</span>)</span>&#123; </span><br><span class="line">		<span class="keyword">var</span> cookie = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value);</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span> expires === <span class="string">"string"</span>)</span><br><span class="line">			cookie += <span class="string">";expires="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(expires);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(expires <span class="keyword">instanceof</span> <span class="built_in">Date</span>)</span><br><span class="line">			cookie += <span class="string">";expires="</span> + expires;</span><br><span class="line">		<span class="keyword">if</span>(path)</span><br><span class="line">			cookie += <span class="string">";path="</span> + path;</span><br><span class="line">		<span class="keyword">if</span>(domain)</span><br><span class="line">			cookie += <span class="string">";domain"</span> + domain;</span><br><span class="line">		<span class="keyword">if</span>(secure)</span><br><span class="line">			cookie += <span class="string">";secure"</span>;</span><br><span class="line">		<span class="built_in">document</span>.cookie = cookie;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//获取cookie</span></span><br><span class="line">	get : <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span><br><span class="line">	</span>&#123;</span><br><span class="line">		name = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">'='</span>;</span><br><span class="line">		<span class="keyword">var</span> cookie = <span class="built_in">document</span>.cookie;</span><br><span class="line">		<span class="keyword">var</span> start = cookie.indexOf(name);</span><br><span class="line">		<span class="keyword">if</span>(start === -<span class="number">1</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">var</span> end = cookie.indexOf(<span class="string">';'</span>,start);</span><br><span class="line">		<span class="keyword">if</span>(end === -<span class="number">1</span>)</span><br><span class="line">			end = cookie.length;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(cookie.substring(start + name.length,end));</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//删除cookie</span></span><br><span class="line">	remove : <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span><br><span class="line">	</span>&#123;</span><br><span class="line">		<span class="built_in">document</span>.cookie = name + <span class="string">"=;expires="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="&lt;link&gt;与@import"><code>&lt;link&gt;</code>与<code>@import</code></h2><h3 id="用法">用法</h3><ol>
+<li>link : <code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;文件地址&quot;&gt;</code></li>
+<li>@import : <code>&lt;style type=&quot;text/css&quot;&gt;@import url(&quot;文件地址&quot;)&lt;/style&gt;</code><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//@import引用存在兼容性问题</span><br><span class="line">@import 'style.css' //Windows IE4/ NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别</span><br><span class="line">@import "style.css" //Windows IE4/ NS4, Macintosh IE4/NS4不识别</span><br><span class="line">@import url(style.css) //Windows NS4, Macintosh NS4不识别</span><br><span class="line">@import url('style.css') //Windows NS4, Mac OS X IE5, Macintosh IE4/IE5/NS4不识别</span><br><span class="line">@import url("style.css") //Windows NS4, Macintosh NS4不识别</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="区别">区别</h3><ol>
+<li>link是HTML标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS。</li>
+<li>link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。</li>
+<li>link是HTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。</li>
+<li>link支持使用Javascript控制DOM去改变样式；而@import不支持。</li>
+</ol>
+<h2 id="relative与translate"><code>relative</code>与<code>translate</code></h2><h3 id="作用">作用</h3><p>从布局的角度来看，两个的效果是一样的，都是根据自身位置进行偏移。</p>
+<h3 id="区别-1">区别</h3><ol>
+<li><code>translate</code>可以简单地作用于<code>position:absolute</code>的元素上面，而<code>position:relative</code>还得加额外的标签。</li>
+<li>使用<code>translate</code>时，可以让GPU参与运算，动画的 FPS更高。使用<code>position</code>时，最小的动画变化的单位是1px，而使用<code>translate</code>参与时，可以做到更小（动画效果更加平滑）</li>
+<li>总的来说，<code>position</code>主要用于布局，而<code>transform</code>主要是动画。</li>
+<li>参考资料  <a href="http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank" rel="external">http://paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/</a></li>
+</ol>
+<h2 id="localStorage和sessionStorage"><code>localStorage</code>和<code>sessionStorage</code></h2><h3 id="localStorage_sessionStorage与cookie"><code>localStorage sessionStorage</code>与<code>cookie</code></h3><ol>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），即cookie在浏览器和服务器间来回传递。而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
+<li>cookie数据还有路径（path）的概念，可以限制cookie只属于某个路径下。</li>
+<li>cookie数据基本不能超过4k(具体看上文)，同时因为每次http请求都会携带cookie，所以cookie只适合保存很小的数据，如会话标识。sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+<li>sessionStorage：仅在当前浏览器窗口关闭前有效，自然也就不可能持久保持；localStorage：始终有效，窗口或浏览器关闭也一直保存，因此用作持久数据；cookie只在设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭。</li>
+<li>sessionStorage不在不同的浏览器窗口中共享，即使是同一个页面；localStorage 在所有同源窗口中都是共享的；cookie也是在所有同源窗口中都是共享的。</li>
+</ol>
+<h3 id="localStorage"><code>localStorage</code></h3><ol>
+<li><p>存储</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">localStorage.name = value;<span class="comment">//直接操作，类似于对象</span></span><br><span class="line">localStorage[name] = value;</span><br><span class="line">localStorage.setItem(name,value);<span class="comment">//使用方法去存储</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = localStorage.name;</span><br><span class="line"><span class="keyword">var</span> a = localStorage[name];</span><br><span class="line"><span class="keyword">var</span> a = localStorage.getItem(name);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.removeItem(name);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener)&#123;</span><br><span class="line">	<span class="built_in">window</span>.addEventListener(<span class="string">"storage"</span>,handle_storage,<span class="literal">false</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.attachEvent)&#123;</span><br><span class="line">	<span class="built_in">window</span>.attachEvent(<span class="string">"onstorage"</span>,handle_storage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>onstorage事件用于监测localStorage的变动。其event对象包括<code>key</code>,<code>oldValue</code>,<code>newValue</code>等属性。</p>
+</li>
+<li>注意<br>在localStorage中存储，只能存储字符串。所以如果存的识别的格式，需要手动类型转换。</li>
+</ol>
+<h3 id="sessionStorage"><code>sessionStorage</code></h3><p>使用方式与localStorage相同。</p>
+<h2 id="webWorker">webWorker</h2><p>Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。</p>
+<h3 id="演示程序">演示程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//worker.js</span></span><br><span class="line">onmessage =<span class="function"><span class="keyword">function</span> (<span class="params">evt</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> d = evt.data;</span><br><span class="line"><span class="comment">//通过evt.data获得发送来的数据</span></span><br><span class="line">  postMessage( d );</span><br><span class="line"><span class="comment">//将获取到的数据发送会主线程</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="comment">//WEB页主线程</span></span><br><span class="line"><span class="keyword">var</span> worker =<span class="keyword">new</span> Worker(<span class="string">"worker.js"</span>); </span><br><span class="line"><span class="comment">//创建一个Worker对象并向它传递将在新线程中执行的脚本的URL</span></span><br><span class="line"> worker.postMessage(<span class="string">"hello world"</span>);     </span><br><span class="line"><span class="comment">//向worker发送数据</span></span><br><span class="line"> worker.onmessage =<span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;     </span><br><span class="line"><span class="comment">//接收worker传过来的数据函数</span></span><br><span class="line">   <span class="built_in">console</span>.log(evt.data);              </span><br><span class="line"><span class="comment">//输出worker发送来的数据</span></span><br><span class="line"> &#125;</span><br><span class="line"> </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="title">body</span>&gt;</span><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="解析">解析</h3><ol>
+<li>通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。</li>
+<li>通过worker.postMessage( data ) 方法来向worker发送数据。</li>
+<li>绑定worker.onmessage方法来接收worker发送过来的数据。</li>
+<li>可以使用 worker.terminate() 来终止一个worker的执行。</li>
+<li>子线程可以通过postMessage( data ) 方法来向主线程发送数据。</li>
+<li>子线程可以绑定onmessage方法来接收主线程发送过来的数据。</li>
+</ol>
+<h3 id="以上示例与资料来源于_http://blog-jobbole-com/30592/">以上示例与资料来源于 <a href="http://blog.jobbole.com/30592/" target="_blank" rel="external">http://blog.jobbole.com/30592/</a></h3><h2 id="webSocket">webSocket</h2><blockquote>
+<p>WebSocket API是下一代客户端-服务器的异步通信方法。该通信取代了单个的TCP套接字，使用ws或wss协议，可用于任意的客户端和服务器程序。WebSocket目前由W3C进行标准化。WebSocket已经受到Firefox 4、Chrome 4、Opera 10.70以及Safari 5等浏览器的支持。</p>
+<p>WebSocket API最伟大之处在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息。WebSocket并不限于以Ajax(或XHR)方式通信，因为Ajax技术需要客户端发起请求，而WebSocket服务器和客户端可以彼此相互推送信息；XHR受到域的限制，而WebSocket允许跨域通信。</p>
+<p>Ajax技术很聪明的一点是没有设计要使用的方式。WebSocket为指定目标创建，用于双向推送消息。</p>
+</blockquote>
+<h3 id="WebSocket_API的用法">WebSocket API的用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个Socket实例</span></span><br><span class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">'ws://localhost:8080'</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 打开Socket </span></span><br><span class="line">socket.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送一个初始化消息</span></span><br><span class="line">  socket.send(<span class="string">'I am the client and I\'m listening!'</span>); </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听消息</span></span><br><span class="line">  socket.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Client received a message'</span>,event); </span><br><span class="line">  &#125;; </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 监听Socket的关闭</span></span><br><span class="line">  socket.onclose = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Client notified socket has closed'</span>,event); </span><br><span class="line">  &#125;; </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 关闭Socket.... </span></span><br><span class="line">  <span class="comment">//socket.close() </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="nodejs的Socket-IO模块">nodejs的Socket.IO模块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要HTTP 模块来启动服务器和Socket.IO</span></span><br><span class="line"><span class="keyword">var</span> http= <span class="built_in">require</span>(<span class="string">'http'</span>), io= <span class="built_in">require</span>(<span class="string">'socket.io'</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 在8080端口启动服务器</span></span><br><span class="line"><span class="keyword">var</span> server= http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123; </span><br><span class="line">  <span class="comment">// 发送HTML的headers和message</span></span><br><span class="line">  res.writeHead(<span class="number">200</span>,&#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html'</span> &#125;); </span><br><span class="line">  res.end(<span class="string">'&lt;h1&gt;Hello Socket Lover!&lt;/h1&gt;'</span>); </span><br><span class="line">&#125;); </span><br><span class="line">server.listen(<span class="number">8080</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个Socket.IO实例，把它传递给服务器</span></span><br><span class="line"><span class="keyword">var</span> socket= io.listen(server); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加一个连接监听器</span></span><br><span class="line">socket.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">client</span>)</span>&#123; </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 成功！现在开始监听接收到的消息</span></span><br><span class="line">  client.on(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Received message from client!'</span>,event); </span><br><span class="line">  &#125;); </span><br><span class="line">  client.on(<span class="string">'disconnect'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    clearInterval(interval); </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Server has disconnected'</span>); </span><br><span class="line">  &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="以上示例与资料来源于_http://www-cnblogs-com/wei2yi/archive/2011/03/23/1992830-html">以上示例与资料来源于 <a href="http://www.cnblogs.com/wei2yi/archive/2011/03/23/1992830.html" target="_blank" rel="external">http://www.cnblogs.com/wei2yi/archive/2011/03/23/1992830.html</a></h3></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/27/【移动开发09】自适应屏幕宽度最佳解决方案-转载自蘑菇哥/" rel="next" title="【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥">
+                <i class="fa fa-chevron-left"></i> 【移动开发09】自适应屏幕宽度最佳解决方案 转载自蘑菇哥
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/29/印象笔记-二/" rel="prev" title="印象笔记(二)">
+                印象笔记(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/29/印象笔记-一/"
+           data-title="印象笔记(一)" data-url="http://yoursite.com/2016/03/29/印象笔记-一/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/avatar.jpg" alt="Mo_North" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Mo_North</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/MoNorth" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://resume.northk.wang" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> RESUME
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://xiyoumobile.com" target="_blank">西邮移动应用开发实验室</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lyh__521" target="_blank">本山的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.xxput.com" target="_blank">小鑫的博客</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/yes_i_am" target="_blank">巨龙的博客</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端笔记(一)"><span class="nav-number">1.</span> <span class="nav-text">前端笔记(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS_cookie"><span class="nav-number">1.1.</span> <span class="nav-text">JS cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置：document-cookie=name+value_设置多条cookie不会覆盖。"><span class="nav-number">1.1.1.</span> <span class="nav-text">设置：document.cookie=name+value 设置多条cookie不会覆盖。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数量和大小限制："><span class="nav-number">1.1.2.</span> <span class="nav-text">数量和大小限制：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码封装"><span class="nav-number">1.1.3.</span> <span class="nav-text">代码封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#<link>与@import"><span class="nav-number">1.2.</span> <span class="nav-text"><link>与@import</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.2.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-number">1.2.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relative与translate"><span class="nav-number">1.3.</span> <span class="nav-text">relative与translate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.3.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage和sessionStorage"><span class="nav-number">1.4.</span> <span class="nav-text">localStorage和sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage_sessionStorage与cookie"><span class="nav-number">1.4.1.</span> <span class="nav-text">localStorage sessionStorage与cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localStorage"><span class="nav-number">1.4.2.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage"><span class="nav-number">1.4.3.</span> <span class="nav-text">sessionStorage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webWorker"><span class="nav-number">1.5.</span> <span class="nav-text">webWorker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#演示程序"><span class="nav-number">1.5.1.</span> <span class="nav-text">演示程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">1.5.2.</span> <span class="nav-text">解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以上示例与资料来源于_http://blog-jobbole-com/30592/"><span class="nav-number">1.5.3.</span> <span class="nav-text">以上示例与资料来源于 http://blog.jobbole.com/30592/</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webSocket"><span class="nav-number">1.6.</span> <span class="nav-text">webSocket</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket_API的用法"><span class="nav-number">1.6.1.</span> <span class="nav-text">WebSocket API的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodejs的Socket-IO模块"><span class="nav-number">1.6.2.</span> <span class="nav-text">nodejs的Socket.IO模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以上示例与资料来源于_http://www-cnblogs-com/wei2yi/archive/2011/03/23/1992830-html"><span class="nav-number">1.6.3.</span> <span class="nav-text">以上示例与资料来源于 http://www.cnblogs.com/wei2yi/archive/2011/03/23/1992830.html</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mo_North</span>
+</div>
+
+<div class="powered-by">
+  <a class="theme-link" href="http://resume.northk.wang">我的主页</a>
+</div>
+
+<div class="theme-info">
+  tel:15664653600
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"north"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
