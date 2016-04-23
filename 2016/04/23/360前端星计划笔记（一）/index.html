@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c语言,排序,桶排序," />
+  <meta name="keywords" content="360前端星计划,前端,笔记,转载," />
 
 
 
@@ -51,16 +51,19 @@
 
 
 
-<meta name="description" content="桶排序桶排序可以说是最高速度的排序了，但他消耗的空间也是杠杠的。我个人认为，如果排序数字比较大，就可以考虑放弃它了。当然，它比较简单。">
+<meta name="description" content="360前端星计划详情跳转转载自箫声远">
 <meta property="og:type" content="article">
-<meta property="og:title" content="桶排序">
-<meta property="og:url" content="http://yoursite.com/2016/02/18/桶排序/index.html">
+<meta property="og:title" content="360前端星计划笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2016/04/23/360前端星计划笔记（一）/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="桶排序桶排序可以说是最高速度的排序了，但他消耗的空间也是杠杠的。我个人认为，如果排序数字比较大，就可以考虑放弃它了。当然，它比较简单。">
-<meta property="og:updated_time" content="2016-02-18T15:29:30.347Z">
+<meta property="og:description" content="360前端星计划详情跳转转载自箫声远">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152438007-1550512874.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152514945-957981644.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152603273-1564643949.png">
+<meta property="og:updated_time" content="2016-04-23T01:47:36.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="桶排序">
-<meta name="twitter:description" content="桶排序桶排序可以说是最高速度的排序了，但他消耗的空间也是杠杠的。我个人认为，如果排序数字比较大，就可以考虑放弃它了。当然，它比较简单。">
+<meta name="twitter:title" content="360前端星计划笔记（一）">
+<meta name="twitter:description" content="360前端星计划详情跳转转载自箫声远">
 
 
 
@@ -72,7 +75,7 @@
   };
 </script>
 
-  <title> 桶排序 | Mo_North </title>
+  <title> 360前端星计划笔记（一） | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +215,7 @@
             
             
               
-                桶排序
+                360前端星计划笔记（一）
               
             
           </h1>
@@ -221,8 +224,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-02-18T23:15:32+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-04-23T09:41:43+08:00" content="2016-04-23">
+              2016-04-23
             </time>
           </span>
 
@@ -231,8 +234,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/排序/" itemprop="url" rel="index">
-                    <span itemprop="name">排序</span>
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
                   </a>
                 </span>
 
@@ -247,8 +250,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/桶排序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/桶排序/" itemprop="commentsCount"></span>
+                <a href="/2016/04/23/360前端星计划笔记（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/360前端星计划笔记（一）/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,12 +270,196 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="桶排序">桶排序</h1><p>桶排序可以说是最高速度的排序了，但他消耗的空间也是杠杠的。我个人认为，如果排序数字比较大，就可以考虑放弃它了。当然，它比较简单。</p>
+        <span itemprop="articleBody"><p><a href="http://html5.360.cn/star" target="_blank" rel="external">360前端星计划详情跳转</a><br><img src="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152438007-1550512874.png" alt=""><br><strong>转载自箫声远</strong></p>
 <a id="more"></a>
-<p>桶排序或者说箱排序是一种稳定排序，他的时间复杂度为O(n)，是不是相当恐怖，它完美突破了O(nlogn)的下限啊。可是它也是相当占用空间的。下面简单讲解一下。</p>
-<h1 id="基本思想">基本思想</h1><p>桶排就是根据所排数列，找创建一个长度为其最大数字的一维数组，然后遍历所排数列，将每个数放入刚才创建的数组中，放入位置下标为本数字。这就是桶排。如果所排数字过大，那么所消耗的空间就是极大的。</p>
-<h1 id="小小的优化">小小的优化</h1><p>在所排数字很大的情况下，可以考虑分组。比如说数字分布离散度较高。数字范围在1——1000之间。那么就可以创建10个集合。分别放入1-99，100-199，如此。放入后再对每个分组进行其他排序。<strong>个人觉得并没有什么卵用。。。还不是要消耗那么大的空间？</strong></p>
-<h1 id="比较简单，不多说了，直接上代码">比较简单，不多说了，直接上代码</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Bucket</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> n)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> max = arr[<span class="number">0</span>],i,j = <span class="number">0</span>,bArr[<span class="number">1000</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		bArr[arr[i]] ++;</span><br><span class="line">		<span class="keyword">if</span>(max &lt; arr[i])</span><br><span class="line">			max = arr[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"qwwqe"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;= max; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(bArr[i] != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			arr[j++] = i;</span><br><span class="line">			bArr[i] --;</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+<h2 id="Day01-我是前端工程师！（10个问题）（月影）">Day01.我是前端工程师！（10个问题）（月影）</h2><pre><code>上午：
+    <span class="number">10</span>：<span class="number">00</span> 主持人裕波大大开场白
+    <span class="number">10</span>：<span class="number">15</span> 月影提<span class="number">10</span>个问题 
+</code></pre><h3 id="预热">预热</h3><ul>
+<li><p>你们平时怎么学习前端？</p>
+<ul>
+<li>本次学习仅仅是引导性交流学习</li>
+</ul>
+</li>
+<li><p>你们都有github吗？了解到什么情况？</p>
+<ul>
+<li>最终的项目代码提交到github中</li>
+<li>关于项目的要求：<ul>
+<li>只要和前端有关。</li>
+<li>有创意，新颖。</li>
+<li>课程比较满，设计产品：简约美，小而精。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>善于思考</p>
+<ul>
+<li>html语义化：便于维护（给人阅读），便于搜索seo（给机器阅读）<br><ul>
+<li><a href="https://www.zhihu.com/question/20455165" target="_blank" rel="external">知乎：如何理解 Web 语义化？</a></li>
+<li><strong>染料典故(think)</strong>:打破束缚<br></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><br><br></p>
+<ol>
+<li>前端工程师是怎样的人？<ul>
+<li>页面实现</li>
+<li>用户交互</li>
+<li>网络安全</li>
+<li>页面性能</li>
+</ul>
+</li>
+</ol>
+<p><br></p>
+<ol>
+<li><p>前端工程师有怎样的特质？<br><br></p>
+</li>
+<li><p>优秀的前端工程师最重要的是什么？</p>
+<ul>
+<li>如何成为最优秀的前端工程师</li>
+<li>注重基础的数学算法<br><br></li>
+</ul>
+</li>
+<li><p>平时工作中前端攻城狮主要做哪些事情？</p>
+<ul>
+<li>他／她们是如何工作的<br><br></li>
+</ul>
+</li>
+<li><p>前端工程师一般涌什么开发工具和调试工具？</p>
+<ul>
+<li>他／她们是如何更好地工作的？<ul>
+<li>Sublime Text 3</li>
+<li>Atom !!!</li>
+<li>WebStorm<br><br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前端工程师在工作中会遇到哪些挑战？</p>
+<ul>
+<li>遇到技术难题，他／她们是如何解决的？<br><br></li>
+</ul>
+</li>
+<li><p>成为前端工程师有哪些乐趣？</p>
+<ul>
+<li>前端工程师好玩在哪里？<br><br></li>
+</ul>
+</li>
+<li><p>前端对公司来说重要吗？</p>
+<ul>
+<li>一个公司到底需要不需要前端工程师？<br><br></li>
+</ul>
+</li>
+<li><p>前端工程师如何成长？</p>
+<ul>
+<li>一个前端工程师如何变得更牛？<br><br></li>
+</ul>
+</li>
+<li><p>你们有什么问题</p>
+<ul>
+<li>中间人劫持及解决<br><br></li>
+</ul>
+</li>
+</ol>
+<h3 id="HTTP与性能（屈屈）">HTTP与性能（屈屈）</h3><ul>
+<li><p>http协议基础</p>
+<ul>
+<li><p>node.js基础教程</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 发送 HTTP 头部 </span></span><br><span class="line">	<span class="comment">// HTTP 状态值: 200 : OK</span></span><br><span class="line">	<span class="comment">// 内容类型: text/plain</span></span><br><span class="line">	response.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 发送响应数据 "Hello World"</span></span><br><span class="line">	response.end(<span class="string">'Hello World\n'</span>);</span><br><span class="line">&#125;).listen(<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 终端打印如下信息</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8888/'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><span class="bullet">* </span>http get／post
+<span class="bullet">* </span>自己写歌［浏览器］（读取源代码而不解释）
+<span class="bullet">* </span>cookie session
+<span class="bullet">* </span>http抓包、发包工具(fiddler使用与调试)
+<span class="bullet">* </span>http历史
+</code></pre><ul>
+<li><p>WTO（web性能优化）</p>
+<ul>
+<li><p>http请求与相应</p>
+<ul>
+<li>keep－alive</li>
+<li>同域并发限制</li>
+<li>域名散列</li>
+<li>协议开销，websocket（无请求头） 适合用来做小而多的包</li>
+<li>合并请求</li>
+<li>压缩</li>
+<li><p>cache</p>
+<ul>
+<li><p>ETag</p>
+<pre><code>ETag或实体标签（entity tag）是万维网协议HTTP的一部分。ETag是HTTP协议提供的若干机制中的一种Web缓存验证机制，并且允许客户端进行缓存协商。这就使得缓存变得更加高效，而且节省带宽。如果资源的内容没有发生改变，Web服务器就不需要发送一个完整的响应。ETag也可用于乐观并发控制<span class="string">[1]</span>，作为一种防止资源同步更新而相互覆盖的方法。
+</code></pre></li>
+<li><p>Expires</p>
+<pre><code>...
+</code></pre></li>
+<li><p>cache-control</p>
+<pre><code>...
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><span class="keyword">*</span> 浏览器请求的三种方式
+    <span class="keyword">*</span> 在地址栏回车、点击链接；使用全部缓存。
+    <span class="keyword">*</span> f5/cmd＋r；忽略 Expires、cache-control
+
+
+<span class="keyword">*</span> 阻塞渲染
+    <span class="keyword">*</span> 样式内连
+    <span class="keyword">*</span> 页面加载时间点
+
+<span class="keyword">*</span> http性能指标
+<span class="keyword">*</span> http性能测量工具
+<span class="keyword">*</span> http瀑布图
+</code></pre><p><br></p>
+<pre><code><span class="keyword">*</span> 推荐书目：
+    <span class="keyword">*</span> 《图解http》
+    <span class="keyword">*</span> 《http权威指南》
+    <span class="keyword">*</span> 《web性能权威指南》
+</code></pre><p><br></p>
+<h4 id="总结：">总结：</h4><pre><code>上午：月影大大提出并分享了十个问题，主要是对前端工程师的职位正确认知以及思维方式的突破还有强调基础算法思维的重要性。
+下午：屈屈大大分享了<span class="keyword">http</span>
+</code></pre><p><br><br></p>
+<h2 id="Day02-HTML与CSS">Day02.HTML与CSS</h2><ul>
+<li>HTML与CSS（文博）</li>
+<li>移动Web开发（瓜瓜）</li>
+</ul>
+<p><br><br><br></p>
+<h4 id="总结：-1">总结：</h4><p><br><br></p>
+<h2 id="Day03-JavaScript语言">Day03.JavaScript语言</h2><ul>
+<li>JavaScript实践（上）（月影）</li>
+<li>jQuery开发（岳文）</li>
+</ul>
+<p><br></p>
+<h4 id="总结：-2">总结：</h4><p><br><br></p>
+<h2 id="Day04-现代前端工作流">Day04.现代前端工作流</h2><ul>
+<li>现代前端工作流（之杰）</li>
+<li>Node.js与thinkjs（成银）</li>
+</ul>
+<p><br></p>
+<h4 id="总结：-3">总结：</h4><p><br><br></p>
+<h2 id="Day05-CDN与开发者工具">Day05.CDN与开发者工具</h2><ul>
+<li>HTTP与性能（lc）</li>
+<li>JavaScript实践（月影）</li>
+</ul>
+<p><br></p>
+<h4 id="总结：-4">总结：</h4><p><br><br></p>
+<h2 id="Day06-CDN与开发者工具">Day06.CDN与开发者工具</h2><ul>
+<li>CDN与开发者工具（）</li>
+</ul>
+<p><br></p>
+<h4 id="总结：-5">总结：</h4><p><br><br></p>
+<p><img src="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152514945-957981644.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/901135/201604/901135-20160419152603273-1564643949.png" alt=""></p>
+<p><br><br><a href="http://html5.360.cn/star" target="_blank" rel="external">360前端星计划详情跳转</a></p>
+</span>
       
     </div>
 
@@ -280,11 +467,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c语言/" rel="tag">#c语言</a>
+            <a href="/tags/360前端星计划/" rel="tag">#360前端星计划</a>
           
-            <a href="/tags/排序/" rel="tag">#排序</a>
+            <a href="/tags/前端/" rel="tag">#前端</a>
           
-            <a href="/tags/桶排序/" rel="tag">#桶排序</a>
+            <a href="/tags/笔记/" rel="tag">#笔记</a>
+          
+            <a href="/tags/转载/" rel="tag">#转载</a>
           
         </div>
       
@@ -293,17 +482,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/04/堆排序/" rel="next" title="堆排序">
-                <i class="fa fa-chevron-left"></i> 堆排序
+              <a href="/2016/04/03/手撕拖拽/" rel="next" title="手撕拖拽">
+                <i class="fa fa-chevron-left"></i> 手撕拖拽
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/19/二分查找/" rel="prev" title="二分查找">
-                二分查找 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -330,8 +515,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/18/桶排序/"
-           data-title="桶排序" data-url="http://yoursite.com/2016/02/18/桶排序/">
+      <div class="ds-thread" data-thread-key="2016/04/23/360前端星计划笔记（一）/"
+           data-title="360前端星计划笔记（一）" data-url="http://yoursite.com/2016/04/23/360前端星计划笔记（一）/">
       </div>
     
   </div>
@@ -466,7 +651,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#桶排序"><span class="nav-number">1.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本思想"><span class="nav-number">2.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小小的优化"><span class="nav-number">3.</span> <span class="nav-text">小小的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#比较简单，不多说了，直接上代码"><span class="nav-number">4.</span> <span class="nav-text">比较简单，不多说了，直接上代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day01-我是前端工程师！（10个问题）（月影）"><span class="nav-number">1.</span> <span class="nav-text">Day01.我是前端工程师！（10个问题）（月影）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#预热"><span class="nav-number">1.1.</span> <span class="nav-text">预热</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP与性能（屈屈）"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP与性能（屈屈）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">1.2.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day02-HTML与CSS"><span class="nav-number">2.</span> <span class="nav-text">Day02.HTML与CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day03-JavaScript语言"><span class="nav-number">3.</span> <span class="nav-text">Day03.JavaScript语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day04-现代前端工作流"><span class="nav-number">4.</span> <span class="nav-text">Day04.现代前端工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-3"><span class="nav-number">4.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day05-CDN与开发者工具"><span class="nav-number">5.</span> <span class="nav-text">Day05.CDN与开发者工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-4"><span class="nav-number">5.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Day06-CDN与开发者工具"><span class="nav-number">6.</span> <span class="nav-text">Day06.CDN与开发者工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结：-5"><span class="nav-number">6.0.1.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
