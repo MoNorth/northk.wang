@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DOM,HTML+CSS+JS,前端,前端优化," />
+  <meta name="keywords" content="DOM,HTML+CSS+JS,事件,前端,前端优化," />
 
 
 
@@ -51,16 +51,16 @@
 
 
 
-<meta name="description" content="innerHTML和createElement的一部分探究这两种用于动态创建html的方法可以说是快用烂，可是到底孰强孰弱，虽说已经有很多结论了，但我觉得这个任然需要自己去探索一下。">
+<meta name="description" content="偶遇到这么一个问题：当我们的页面涉及到相当多的事件的时候，内存会不会爆掉呀。那么怎么解决这个问题呢。参考来自《Javascript高级编程》和ReactJs事件绑定">
 <meta property="og:type" content="article">
-<meta property="og:title" content="innerHTML和createElement">
-<meta property="og:url" content="http://yoursite.com/2016/01/17/innerHTML和createElement/index.html">
+<meta property="og:title" content="多事件绑定页面臃肿解决方案">
+<meta property="og:url" content="http://yoursite.com/2016/05/30/多事件绑定页面臃肿解决方案/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="innerHTML和createElement的一部分探究这两种用于动态创建html的方法可以说是快用烂，可是到底孰强孰弱，虽说已经有很多结论了，但我觉得这个任然需要自己去探索一下。">
-<meta property="og:updated_time" content="2016-01-17T08:15:52.394Z">
+<meta property="og:description" content="偶遇到这么一个问题：当我们的页面涉及到相当多的事件的时候，内存会不会爆掉呀。那么怎么解决这个问题呢。参考来自《Javascript高级编程》和ReactJs事件绑定">
+<meta property="og:updated_time" content="2016-05-30T09:45:45.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="innerHTML和createElement">
-<meta name="twitter:description" content="innerHTML和createElement的一部分探究这两种用于动态创建html的方法可以说是快用烂，可是到底孰强孰弱，虽说已经有很多结论了，但我觉得这个任然需要自己去探索一下。">
+<meta name="twitter:title" content="多事件绑定页面臃肿解决方案">
+<meta name="twitter:description" content="偶遇到这么一个问题：当我们的页面涉及到相当多的事件的时候，内存会不会爆掉呀。那么怎么解决这个问题呢。参考来自《Javascript高级编程》和ReactJs事件绑定">
 
 
 
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title> innerHTML和createElement | Mo_North </title>
+  <title> 多事件绑定页面臃肿解决方案 | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +212,7 @@
             
             
               
-                innerHTML和createElement
+                多事件绑定页面臃肿解决方案
               
             
           </h1>
@@ -221,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-17T14:55:51+08:00" content="2016-01-17">
-              2016-01-17
+            <time itemprop="dateCreated" datetime="2016-05-30T17:17:26+08:00" content="2016-05-30">
+              2016-05-30
             </time>
           </span>
 
@@ -247,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/17/innerHTML和createElement/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/17/innerHTML和createElement/" itemprop="commentsCount"></span>
+                <a href="/2016/05/30/多事件绑定页面臃肿解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/30/多事件绑定页面臃肿解决方案/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,21 +267,17 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="innerHTML和createElement的一部分探究">innerHTML和createElement的一部分探究</h1><p>这两种用于动态创建html的方法可以说是快用烂，可是到底孰强孰弱，虽说已经有很多结论了，但我觉得这个任然需要自己去探索一下。</p>
+        <span itemprop="articleBody"><p>偶遇到这么一个问题：当我们的页面涉及到相当多的事件的时候，内存会不会爆掉呀。那么怎么解决这个问题呢。参考来自《Javascript高级编程》和ReactJs事件绑定</p>
 <a id="more"></a>
-<h2 id="使用简介">使用简介</h2><h3 id="innerHTML">innerHTML</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line"><span class="keyword">var</span> html = <span class="string">"&lt;h1&gt;Title1&lt;/h1&gt;&lt;h2&gt;Title2&lt;/h2&gt;&lt;h3&gt;Title3&lt;/h3&gt;"</span>;</span><br><span class="line">box.innerHTML = html;</span><br></pre></td></tr></table></figure>
-<h3 id="createElement">createElement</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 = <span class="built_in">document</span>.createElement(<span class="string">'h1'</span>);</span><br><span class="line"><span class="keyword">var</span> h1text = <span class="built_in">document</span>.createTextNode(<span class="string">"Title1"</span>);</span><br><span class="line">h1.appendChild(h1text);</span><br><span class="line"><span class="keyword">var</span> h2 = <span class="built_in">document</span>.createElement(<span class="string">'h2'</span>);</span><br><span class="line"><span class="keyword">var</span> h2text = <span class="built_in">document</span>.createTextNode(<span class="string">"Title2"</span>);</span><br><span class="line">h2.appendChild(h2text);</span><br><span class="line"><span class="keyword">var</span> h3 = <span class="built_in">document</span>.createElement(<span class="string">'h3'</span>);</span><br><span class="line"><span class="keyword">var</span> h3text = <span class="built_in">document</span>.createTextNode(<span class="string">"Title3"</span>);</span><br><span class="line">h3.appendChild(h3text);</span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line">box.appendChild(h1);</span><br><span class="line">box.appendChild(h2);</span><br><span class="line">box.appendChild(h3);</span><br></pre></td></tr></table></figure>
-<h2 id="简单分析">简单分析</h2><h3 id="innerHTML-1">innerHTML</h3><p>基本上所有的浏览器都支持innerHTML属性，这个属性并不是W3C DOM标准的组成部分，但现在已经包含在HTML5的规范中。他始见于微软公司的IE4浏览器中，这点说起来倒有点意思，因为虽然它始创于IE，但现如今它在IE中臭毛病最多。常见于IE8及IE8以前的版本。</p>
-<h4 id="问题1">问题1</h4><p>这点倒是IE做的比较好了，大多数浏览器是不支持script标签在innerHTML中赋值的，大多数都不会解析。而IE8及更早版本倒是唯一能在这种情况下解析的。到说是略显可爱。抛开脚本注入的危险不谈，IE做的还是很不错的。但这块就出现了个特别的问题，第一是在IE中想要解析script标签，就必须有defer属性。这点倒无伤大雅。第二点就是IE会将“无作用域元素”不以解释，而script标签恰恰就是所谓的“无作用域元素”。什么是“无作用域元素”呢，就是在页面中看不见的元素，常见的就是style之类的。那么该怎么解决这个问题呢，这也十分简单，就是只要在innerHTML的开始，加入一个非“无作用域元素”就可以了。举个例子，<code>box.innerHTML = &quot;&lt;script&gt;alert(&#39;hello world!&#39;);&lt;/script&gt;&quot;</code>,这样写是不行的，应该在前面加个东西。<code>box.innerHTML = &quot;_&lt;script&gt;alert(&#39;hello world!&#39;);&lt;/script&gt;&quot;</code>或者<code>box.innerHTML = &quot;&lt;h1&gt;title&lt;/h1&gt;&lt;script&gt;alert(&#39;hello world!&#39;);&lt;/script&gt;&quot;</code>。<strong>取材于《JavaScript高级程序设计》</strong></p>
-<h4 id="问题2">问题2</h4><p>这个问题不是专门是IE的，而是所有浏览器都有。就是innerHTML的内存泄漏问题。由于innerHTML使用很方便，所以在清除一些元素的时候，往往也就是用了这样的做法<code>box.innerHTML = &quot;&quot;</code>,然而这样是很有问题的。由于box里面的元素通过innerHTML直接清除，而没有消除掉所加载的事件，造成了严重的内存泄漏。其实这个也很好解决。只需要在清除前，卸载掉加载的事件就可以了。</p>
-<h4 id="问题3">问题3</h4><p>IE8及IE8以下，对于可以使用innerHTML的元素是很有限制的。比如p标签等就不能正常使用innerHTML属性。这点就比较尴尬了。</p>
-<h3 id="createElement-1">createElement</h3><p>createElement方法是所有浏览器通用的一个创建节点的方法。除了在IE中有一点小小的不一样。在IE6,7中，createElement方法所创建的节点，不能正常的赋予name属性，这就比较尴尬了，不过还好，IE对这个方法做出了一个相当可观的改变。就是可以直接把一个类似于innerHTML的长字符串当作参数传入，这样既完美解决了刚才那个bug，也让它变得更加强大。如<code>document.createElement(&quot;&lt;h1&gt;title&lt;/h1&gt;&quot;)</code>。</p>
-<h2 id="性能分析">性能分析</h2><p>网上已经有不少大牛对这两者做过性能测试了，我在这也就不班门弄斧了。只是说一下结论吧。总体来说，innerHTML的效率是要高于createElement的。更详细的比较结果就是，IE对innerHTML的解析更快些，而FF比较差。但无论如何，还是innerHTML要更快一些。但是也有一些误区要注意一下。比如上述的代码中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> html = <span class="string">"&lt;h1&gt;Title1&lt;/h1&gt;&lt;h2&gt;Title2&lt;/h2&gt;&lt;h3&gt;Title3&lt;/h3&gt;"</span>;</span><br><span class="line">box.innerHTML = html;</span><br></pre></td></tr></table></figure>
-<p>这样写是ok的，但是这样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box.innerHTML = <span class="string">"&lt;h1&gt;Title1&lt;/h1&gt;"</span>;</span><br><span class="line">box.innerHTML += <span class="string">"&lt;h2&gt;Title2&lt;/h2&gt;"</span>;</span><br><span class="line">box.innerHTML += <span class="string">"&lt;h3&gt;Title3&lt;/h3&gt;"</span>;</span><br></pre></td></tr></table></figure>
-<p>这样写的话我也就无话可说了。</p>
-<h2 id="小结">小结</h2><p>好了，总的来说，只要注意个别问题，就可以完美的使用innerHTML了。但有些必须要使用createElement的地方也是可以的，毕竟它还是对于新节点的直接操作要方便一些的。</p>
+<h1 id="我们不是普通GUI的语言">我们不是普通GUI的语言</h1><p>在我还在编写.net的时候，常以事件机制去处理所有事物，事件驱动的好处不言而喻，事件是写了一个又一个，绑定了一个又一个。可当我转向web开发的时候，这种事件绑定的机制却成了web开发的反面教材。或许我们现在写的项目中，事件并不是很多，但当绑定的事件多起来的时候，页面性能简直就相当于费了。</p>
+<h1 id="《Javascript高级编程》中的启发">《Javascript高级编程》中的启发</h1><p>在《Javascript高级编程》一书中，对于此问题的解决方案是采用事件委托，将集中在一起的事件或者全部事件委托至他们更高一层的父级元素上面，通过事件冒泡，switch去判断target一些属性而去触发他们。这样，不仅内存问题得以优化，而且在代码结构上，也显得明确了一些。可是每每修改原事件会不会显得比较繁琐。</p>
+<h1 id="ReactJs中的时间绑定">ReactJs中的时间绑定</h1><p>在ReactJs的介绍中，React的事件机制将所有的时间全部统一管理，委托在了最高的document上，而且事件通过特定的接口加以添加，这样既优化了性能，又方便程序员的操作。可是在事件的结构管理上，也显得略为凌乱。我想把他们仍然集中在一起。</p>
+<h1 id="我的方案">我的方案</h1><p>其实我的方案略显鸡肋，就是建立统一的事件管理对象，分而治之。将事件分类，也将委托的父级元素分类，这样就可以写出优美而又高性能的事件了。可是原谅我的才疏学浅，想法是有的，实现写的不是很好，貌似性能不佳。</p>
+<h2 id="看看代码吧">看看代码吧</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Event = <span class="function"><span class="keyword">function</span>(<span class="params">eventName,Base</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.eventName = eventName;</span><br><span class="line">	<span class="keyword">this</span>.eventhandle = [];</span><br><span class="line">	<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">	Base.addEventListener(<span class="keyword">this</span>.eventName,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">		event = event || <span class="built_in">window</span>.event;</span><br><span class="line">		<span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> index <span class="keyword">in</span> that.eventhandle)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">Object</span>.prototype.toString.call(that.eventhandle[index].target) === <span class="string">"[object String]"</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(that.eventhandle[index].target.charAt(<span class="number">0</span>) === <span class="string">'#'</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(target.id === that.eventhandle[index].target.substring(<span class="number">1</span>))</span><br><span class="line">					&#123;</span><br><span class="line">						that.eventhandle[index].handle.call(target,event);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(that.eventhandle[index].target.charAt(<span class="number">0</span>) === <span class="string">'.'</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span>(target.classList.contains(that.eventhandle[index].target.substring(<span class="number">1</span>)))</span><br><span class="line">					&#123;</span><br><span class="line">						that.eventhandle[index].handle.call(target,event);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">if</span>(target.localName === that.eventhandle[index].target)</span><br><span class="line">						that.eventhandle[index].handle.call(target,event);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,<span class="literal">false</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Event.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">eventName,handle</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.eventhandle.push(&#123;target:eventName,handle:handle&#125;);</span><br><span class="line">&#125;;</span><br><span class="line">Event.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params">eventName</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = <span class="keyword">this</span>.eventhandle.length; i&lt;len; i++)</span><br><span class="line">		<span class="keyword">if</span>(eventhandle[i].eventName === eventName)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	eventhandle.splice(i,<span class="number">1</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="解释">解释</h2><p>在使用中，只需要将事件分类，委托的父元素分类，就可以创建出特有的事件对象。我只写了两个常用的方法，用以绑定事件和卸载事件，卸载事件写的不好。暂时不想优化，等以后我有了更好的解决方案再做吧。原理其实就是将不同的时间集合起来，委托在同一个元素上面，将这个元素下所有的事件统一管理在一个集合之中。当然，触发的时候遍历很费性能，我正在想办法解决。</p>
+<h2 id="测试">测试</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">title</span>&gt;</span>event<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css"></span><br><span class="line">		<span class="id">#a</span><span class="rules">&#123;</span><br><span class="line">			<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">			<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">			<span class="rule"><span class="attribute">background-color</span>:<span class="value"> red</span></span>;</span><br><span class="line">		&#125;</span></span><br><span class="line">		<span class="id">#b</span><span class="rules">&#123;</span><br><span class="line">			<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">			<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">			<span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">50px</span></span></span>;</span><br><span class="line">			<span class="rule"><span class="attribute">background-color</span>:<span class="value"> blue</span></span>;</span><br><span class="line">		&#125;</span></span><br><span class="line">		</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"a"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"b"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventClick = <span class="keyword">new</span> Event(<span class="string">"click"</span>,<span class="built_in">document</span>);</span><br><span class="line">eventClick.add(<span class="string">'#a'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">"a"</span>);</span><br><span class="line">&#125;)</span><br><span class="line">eventClick.add(<span class="string">'#b'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	alert(<span class="string">'b'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="打完收工">打完收工</h1><p>ok，我承认我只是不知道为什么单纯的想发一篇博客罢了。。。</p>
 </span>
       
     </div>
@@ -294,6 +290,8 @@
           
             <a href="/tags/HTML-CSS-JS/" rel="tag">#HTML+CSS+JS</a>
           
+            <a href="/tags/事件/" rel="tag">#事件</a>
+          
             <a href="/tags/前端/" rel="tag">#前端</a>
           
             <a href="/tags/前端优化/" rel="tag">#前端优化</a>
@@ -305,17 +303,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/16/二叉树树的基本建立与三种遍历/" rel="next" title="二叉树树的基本建立与三种遍历">
-                <i class="fa fa-chevron-left"></i> 二叉树树的基本建立与三种遍历
+              <a href="/2016/04/23/360前端星计划笔记（一）/" rel="next" title="360前端星计划笔记（一）">
+                <i class="fa fa-chevron-left"></i> 360前端星计划笔记（一）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/17/构建二叉排序树和哈夫曼树/" rel="prev" title="构建二叉排序树和哈夫曼树">
-                构建二叉排序树和哈夫曼树 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -342,8 +336,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/17/innerHTML和createElement/"
-           data-title="innerHTML和createElement" data-url="http://yoursite.com/2016/01/17/innerHTML和createElement/">
+      <div class="ds-thread" data-thread-key="2016/05/30/多事件绑定页面臃肿解决方案/"
+           data-title="多事件绑定页面臃肿解决方案" data-url="http://yoursite.com/2016/05/30/多事件绑定页面臃肿解决方案/">
       </div>
     
   </div>
@@ -478,7 +472,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#innerHTML和createElement的一部分探究"><span class="nav-number">1.</span> <span class="nav-text">innerHTML和createElement的一部分探究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用简介"><span class="nav-number">1.1.</span> <span class="nav-text">使用简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML"><span class="nav-number">1.1.1.</span> <span class="nav-text">innerHTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement"><span class="nav-number">1.1.2.</span> <span class="nav-text">createElement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单分析"><span class="nav-number">1.2.</span> <span class="nav-text">简单分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">innerHTML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">问题1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题2"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">问题2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题3"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">问题3</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">createElement</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能分析"><span class="nav-number">1.3.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我们不是普通GUI的语言"><span class="nav-number">1.</span> <span class="nav-text">我们不是普通GUI的语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#《Javascript高级编程》中的启发"><span class="nav-number">2.</span> <span class="nav-text">《Javascript高级编程》中的启发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactJs中的时间绑定"><span class="nav-number">3.</span> <span class="nav-text">ReactJs中的时间绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#我的方案"><span class="nav-number">4.</span> <span class="nav-text">我的方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#看看代码吧"><span class="nav-number">4.1.</span> <span class="nav-text">看看代码吧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释"><span class="nav-number">4.2.</span> <span class="nav-text">解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">4.3.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打完收工"><span class="nav-number">5.</span> <span class="nav-text">打完收工</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
