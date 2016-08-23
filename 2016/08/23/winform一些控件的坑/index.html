@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c语言,二叉树,二叉树的建立,二叉树的遍历," />
+  <meta name="keywords" content=".net,Fiddler,c#," />
 
 
 
@@ -51,16 +51,16 @@
 
 
 
-<meta name="description" content="二叉树的建立与三种遍历对于基本数据结构——树，我想无论如何都得把它搞定，接下来我演示基本的操作">
+<meta name="description" content="winform一些控件的坑近期由于业务需求，开发了一个fiddler插件，具体开发教程查看上一章。因为fiddler插件的界面显示为winform，所以也踩了一些，这章主要记录我爬过的一些坑。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉树树的基本建立与三种遍历">
-<meta property="og:url" content="http://yoursite.com/2016/01/16/二叉树树的基本建立与三种遍历/index.html">
+<meta property="og:title" content="winform一些控件的坑">
+<meta property="og:url" content="http://yoursite.com/2016/08/23/winform一些控件的坑/index.html">
 <meta property="og:site_name" content="Mo_North">
-<meta property="og:description" content="二叉树的建立与三种遍历对于基本数据结构——树，我想无论如何都得把它搞定，接下来我演示基本的操作">
-<meta property="og:updated_time" content="2016-01-17T14:09:23.945Z">
+<meta property="og:description" content="winform一些控件的坑近期由于业务需求，开发了一个fiddler插件，具体开发教程查看上一章。因为fiddler插件的界面显示为winform，所以也踩了一些，这章主要记录我爬过的一些坑。">
+<meta property="og:updated_time" content="2016-08-23T11:29:13.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二叉树树的基本建立与三种遍历">
-<meta name="twitter:description" content="二叉树的建立与三种遍历对于基本数据结构——树，我想无论如何都得把它搞定，接下来我演示基本的操作">
+<meta name="twitter:title" content="winform一些控件的坑">
+<meta name="twitter:description" content="winform一些控件的坑近期由于业务需求，开发了一个fiddler插件，具体开发教程查看上一章。因为fiddler插件的界面显示为winform，所以也踩了一些，这章主要记录我爬过的一些坑。">
 
 
 
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title> 二叉树树的基本建立与三种遍历 | Mo_North </title>
+  <title> winform一些控件的坑 | Mo_North </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +212,7 @@
             
             
               
-                二叉树树的基本建立与三种遍历
+                winform一些控件的坑
               
             
           </h1>
@@ -221,8 +221,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-16T22:29:58+08:00" content="2016-01-16">
-              2016-01-16
+            <time itemprop="dateCreated" datetime="2016-08-23T17:20:23+08:00" content="2016-08-23">
+              2016-08-23
             </time>
           </span>
 
@@ -231,8 +231,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/树/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
+                  <a href="/categories/net/" itemprop="url" rel="index">
+                    <span itemprop="name">.net</span>
                   </a>
                 </span>
 
@@ -247,8 +247,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/16/二叉树树的基本建立与三种遍历/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/16/二叉树树的基本建立与三种遍历/" itemprop="commentsCount"></span>
+                <a href="/2016/08/23/winform一些控件的坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/23/winform一些控件的坑/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -267,19 +267,50 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="二叉树的建立与三种遍历">二叉树的建立与三种遍历</h1><p>对于基本数据结构——树，我想无论如何都得把它搞定，接下来我演示基本的操作</p>
+        <span itemprop="articleBody"><h1 id="winform一些控件的坑">winform一些控件的坑</h1><p>近期由于业务需求，开发了一个fiddler插件，具体开发教程查看上一章。因为fiddler插件的界面显示为winform，所以也踩了一些，这章主要记录我爬过的一些坑。</p>
 <a id="more"></a>
-<h2 id="二叉树的建立">二叉树的建立</h2><p>二叉树最简单的建立方法就是递归建立，先贴代码</p>
-<p>结构体</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Node&#123;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="keyword">struct</span> Node *lNode;</span><br><span class="line">	<span class="keyword">struct</span> Node *rNode;</span><br><span class="line">&#125;Node , *Tree;</span><br></pre></td></tr></table></figure>
-<p>创建</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">CreateByInput</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Tree root;</span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;data);</span><br><span class="line">	<span class="keyword">if</span>(data == -<span class="number">1</span>)</span><br><span class="line">		root = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		root = (Tree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">		root-&gt;data = data;</span><br><span class="line">		root-&gt;lNode = CreateByInput(i+<span class="number">1</span>);</span><br><span class="line">		root-&gt;rNode = CreateByInput(i+<span class="number">1</span>);	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在此之前我尝试过迭代建立还有非返回型的创建，但由于确实是好长时间没有写过C语言了，对于指针真是忘得光光的，那么代码就不贴了，显得凌乱。上述的建立过程就是按照树的先序顺序，并且空结点赋-1的方式。</p>
-<h2 id="二叉树的遍历">二叉树的遍历</h2><h3 id="先序遍历">先序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">PreOrder</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,root-&gt;data);<span class="comment">//操作</span></span><br><span class="line">	PreOrder(root-&gt;lNode);</span><br><span class="line">	PreOrder(root-&gt;rNode);</span><br><span class="line">	<span class="keyword">return</span> root; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="中序遍历">中序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">InOrder</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">	InOrder(root-&gt;lNode);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,root-&gt;data);<span class="comment">//操作</span></span><br><span class="line">	InOrder(root-&gt;rNode);</span><br><span class="line">	<span class="keyword">return</span> root; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="后序遍历">后序遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">PostOrder</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	PostOrder(root-&gt;lNode);</span><br><span class="line">	PostOrder(root-&gt;rNode);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,root-&gt;data);<span class="comment">//操作</span></span><br><span class="line">	<span class="keyword">return</span> root; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="先序非递归(非栈)">先序非递归(非栈)</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Tree <span class="title">PreOrderFor</span><span class="params">(Tree root)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>,j,n = <span class="number">1</span>;</span><br><span class="line">	Tree NodeQ[N] = &#123;<span class="literal">NULL</span>&#125;;</span><br><span class="line">	NodeQ[<span class="number">0</span>] = root;</span><br><span class="line">	<span class="keyword">while</span>(NodeQ[i] != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\t"</span>,NodeQ[i]-&gt;data);</span><br><span class="line">		<span class="keyword">if</span>(NodeQ[i]-&gt;rNode != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j = n; j &gt; i + <span class="number">1</span>; j--)</span><br><span class="line">				NodeQ[j] = NodeQ[j - <span class="number">1</span>];</span><br><span class="line">			NodeQ[i + <span class="number">1</span>] = NodeQ[i]-&gt;rNode;</span><br><span class="line">			n++;	</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(NodeQ[i]-&gt;lNode != <span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(j = n; j &gt; i + <span class="number">1</span>; j--)</span><br><span class="line">				NodeQ[j] = NodeQ[j - <span class="number">1</span>];</span><br><span class="line">			NodeQ[i + <span class="number">1</span>] = NodeQ[i]-&gt;lNode;</span><br><span class="line">			n++;	</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于这个先序非递归，我其实有很多想说的，由于网上有很多人是用栈的思想写的，我想用个别的方法实现，就写了这个，作以不同吧。中序和后序思想一样，就先不写了。</p>
+<h2 id="DataGridView">DataGridView</h2><p>先从控件说起，先说说这<code>DataGridView</code>控件，由于这个控件是winform用来显示数据的主要控件，所以很常用，我这里不说它的使用和改造，只说我遇到过的问题。</p>
+<ol>
+<li>大量数据插入容易造成界面假死，所以需要使用多线程插入数据。</li>
+<li>使用多线程插入数据，容易造成索引冲突，还有一个问题就是新插入数据需要一定时间（很短）为其创造视图(界面重排)，但由于多线程，可能会在此时有新的数据插入，造成奔溃。所以需要 合理使用线程锁。</li>
+<li>单纯改变字体大小不会自动调整行高，结果你懂的。</li>
+</ol>
+<h2 id="ListView">ListView</h2><p>listView是一个相当强大的控件，而我之所以用它，是因为我需要在每行数据前加入一个小图标。不然早使用ListBox了，简单好用。当然ListBox也可以通过重写绘制的方法让其显示小图标，但我觉得很麻烦。</p>
+<ol>
+<li><p>页面闪烁，数据发生变更时会造成页面闪烁，体验很不好。这里我借用网上借来的一下段程序解决。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class ListViewNF : System.Windows.Forms.ListView&#10;&#123;&#10;    public ListViewNF()&#10;    &#123;&#10;        // &#24320;&#21551;&#21452;&#32531;&#20914;&#10;        this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);&#10;        // Enable the OnNotifyMessage event so we get a chance to filter out &#10;        // Windows messages before they get to the form&#39;s WndProc&#10;        this.SetStyle(ControlStyles.EnableNotifyMessage, true);&#10;    &#125;&#10;    protected override void OnNotifyMessage(Message m)&#10;    &#123;&#10;        //Filter out the WM_ERASEBKGND message&#10;        if (m.Msg != 0x14)&#10;        &#123;&#10;            base.OnNotifyMessage(m);&#10;        &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>将自己使用的ListView替换为ListViewNF就可以解决。</p>
+</li>
+<li><p>数据变更缓慢，改变数据时，ListView更新缓慢，还容易造成一卡一卡的效果，所以我在这里使用VirtualMode模式。下面介绍一下开启的步骤。</p>
+<ol>
+<li><p>开启</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listView.VirtualMode = true;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建缓存</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&#60;ListViewItem&#62; listViewItemsCache = new List&#60;ListViewItem&#62;();&#10;listView.VirtualListSize = listViewItemsCache.Count; //&#35774;&#32622;&#32531;&#23384;&#21306;&#22823;&#23567;&#65292;&#22312;&#27599;&#27425;&#21464;&#26356;&#25968;&#25454;&#21518;&#37117;&#38656;&#35774;&#32622;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绑定RetrieveVirtualItem事件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listView.RetrieveVirtualItem += listView_RetrieveVirtualItem;&#10;void listView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)&#10;&#123;&#10;    e.Item = this.listViewItemsCache[e.ItemIndex];&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁用selectedItem，在该模式下使用selectedItem将产生异常，可以用下面方法代替,因为在开启VirtualMode模式下，使用selectedItem会报错。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private List&#60;ListViewItem&#62; FindSelectedAll()&#10;&#123;&#10;&#9;List&#60;ListViewItem&#62; r = new List&#60;ListViewItem&#62;();&#10;&#9;foreach (int item in listView1.SelectedIndices)&#10;&#9;&#123;&#10;&#9;&#9;r.Add(bufferItems[item]);&#10;&#9;&#125;&#10;&#9;return r;&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变更数据</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listViewItemsCache.Add(item);&#10;listView.VirtualListSize = listViewItemsCache.Count; &#10;listView.Invalidate(); //&#21518;&#38754;&#36825;&#20004;&#26465;&#22312;&#27599;&#27425;&#21464;&#26356;&#25968;&#25454;&#21518;&#37117;&#24471;&#20351;&#29992;&#12290;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>如果listView宽度大与列总宽度，它会横向排列显示。我的做法是检测listView的宽度，保持列的总宽度始终与listView的宽度一致。（我只有一列，与多列做法一致）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listView.Resize += listView_Resize;&#10;void listView_Resize(object sender, EventArgs e)&#10;&#123;&#10;    this.listView.Columns[0].Width = this.listView.ClientSize.Width;&#10;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="异步发送http请求">异步发送http请求</h2><ol>
+<li>使用异步没啥说的。</li>
+<li><p>JSON数据反序列化。<br>我个人一直使用这种方式：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JavaScriptSerializer jss = new JavaScriptSerializer();&#10;return (Dictionary&#60;string, object&#62;)jss.DeserializeObject(jsonStr);</span><br></pre></td></tr></table></figure>
+<p>这样很方便不用格式化到某个特定的类上，数据结构不再受到约束。但我对其怎么取数组的值仍存在问题。。。好吧，多余了。</p>
+</li>
+</ol>
 </span>
       
     </div>
@@ -288,13 +319,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c语言/" rel="tag">#c语言</a>
+            <a href="/tags/net/" rel="tag">#.net</a>
           
-            <a href="/tags/二叉树/" rel="tag">#二叉树</a>
+            <a href="/tags/Fiddler/" rel="tag">#Fiddler</a>
           
-            <a href="/tags/二叉树的建立/" rel="tag">#二叉树的建立</a>
-          
-            <a href="/tags/二叉树的遍历/" rel="tag">#二叉树的遍历</a>
+            <a href="/tags/c/" rel="tag">#c#</a>
           
         </div>
       
@@ -303,17 +332,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/07/基于nodejs-express-wechat-nodee开发的西邮图书馆/" rel="next" title="基于nodejs express&wechat-nodee开发的西邮图书馆">
-                <i class="fa fa-chevron-left"></i> 基于nodejs express&wechat-nodee开发的西邮图书馆
+              <a href="/2016/08/23/Fiddler插件开发/" rel="next" title="Fiddler插件开发">
+                <i class="fa fa-chevron-left"></i> Fiddler插件开发
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/17/innerHTML和createElement/" rel="prev" title="innerHTML和createElement">
-                innerHTML和createElement <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -340,8 +365,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/16/二叉树树的基本建立与三种遍历/"
-           data-title="二叉树树的基本建立与三种遍历" data-url="http://yoursite.com/2016/01/16/二叉树树的基本建立与三种遍历/">
+      <div class="ds-thread" data-thread-key="2016/08/23/winform一些控件的坑/"
+           data-title="winform一些控件的坑" data-url="http://yoursite.com/2016/08/23/winform一些控件的坑/">
       </div>
     
   </div>
@@ -476,7 +501,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树的建立与三种遍历"><span class="nav-number">1.</span> <span class="nav-text">二叉树的建立与三种遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的建立"><span class="nav-number">1.1.</span> <span class="nav-text">二叉树的建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的遍历"><span class="nav-number">1.2.</span> <span class="nav-text">二叉树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#先序遍历"><span class="nav-number">1.2.1.</span> <span class="nav-text">先序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中序遍历"><span class="nav-number">1.2.2.</span> <span class="nav-text">中序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后序遍历"><span class="nav-number">1.2.3.</span> <span class="nav-text">后序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先序非递归(非栈)"><span class="nav-number">1.2.4.</span> <span class="nav-text">先序非递归(非栈)</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#winform一些控件的坑"><span class="nav-number">1.</span> <span class="nav-text">winform一些控件的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DataGridView"><span class="nav-number">1.1.</span> <span class="nav-text">DataGridView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ListView"><span class="nav-number">1.2.</span> <span class="nav-text">ListView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步发送http请求"><span class="nav-number">1.3.</span> <span class="nav-text">异步发送http请求</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
